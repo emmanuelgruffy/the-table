@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setMinimal } from '../actions/table';
 
-const Onboarding = props => {
+const Onboarding = ({history, setMinimal}) => {
 
     const [buyIn, setBuyIn] = useState('');
     const [onOff, setOnOff] = useState('-off');
@@ -18,8 +20,8 @@ const Onboarding = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('submitted');
-        BrowserRouter.push('/table');
+        setMinimal(buyIn);
+        history.push('/table');
     }
 
     return (
@@ -38,7 +40,7 @@ const Onboarding = props => {
 }
 
 Onboarding.propTypes = {
-
+    setMinimal: PropTypes.func.isRequired
 }
 
-export default Onboarding;
+export default connect(null, { setMinimal })(Onboarding);
