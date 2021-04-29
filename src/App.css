@@ -1,38 +1,120 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background constant page */
+
+.background {
+  height: 100vh;
+  background-color: #9cd484;
+}
+
+.title-section {
+  padding-top: 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title-section h3 {
+  font-family: Special Elite;
+  font-size: 1.938rem;
+  color: #518f36;
+  font-weight: 400;
+}
+.title-section h1 {
+  font-family:  Rye;
+  font-size: 4.375rem;
+  color: #518f36;
+  font-weight: 400;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* Landing page */
+
+.landing {
+  margin: 10rem auto;
+  text-align: center;
+  background-color: #9cd484;
+  z-index: 1;
+}
+@keyframes start-button {
+  from {color: transparent;}
+  to {color: black;}
+}
+.btn-start {
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  color: black;
+  font-weight: 400;
+  background-color: #9cd484;
+  border-color: #9cd484;
+  border-style: none;
+  animation-name: start-button;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.btn-start:hover {
+  cursor: pointer;
+}
+
+/* Onboarding */
+
+.onboarding {
+  margin: 8rem;
+  position: relative;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.onboarding label {
+  padding-right: 1%;
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  font-weight: 400;
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.onboarding input {
+  margin-right: 1%;
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  height: 3rem;
+  border: 1px solid #ccc;
+}
+
+.onboarding input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-onboarding-off {
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  color: gray;
+  font-weight: 400;
+  background-color: #9cd484;
+  border-color: #9cd484;
+  border-style: none;
+}
+
+.btn-onboarding-on {
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  color: black;
+  font-weight: 400;
+  background-color: #9cd484;
+  border-color: #9cd484;
+  border-style: none;
+  animation-name: start-button;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.btn-onboarding-on:hover {
+  cursor: pointer;
 }
