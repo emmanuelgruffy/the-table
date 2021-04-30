@@ -1,4 +1,4 @@
-import { MINIMAL } from '../actions/types';
+import { MINIMAL, NEW_PLAYER } from '../actions/types';
 
 const initialState = {
     minimalBuyIn: null,
@@ -14,6 +14,11 @@ export default function(state = initialState, action) {
                 ...state,
                 minimalBuyIn: payload
             };
+        case NEW_PLAYER:
+            return {
+                ...state,
+                players: [...state.players, payload]
+            }    
         default:
             return state;   
     };
