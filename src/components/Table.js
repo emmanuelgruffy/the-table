@@ -8,7 +8,11 @@ import SetPlayer from './SetPlayer';
 
 
 const Table = props => {
+
     const [newPlayerButton, setNewPlayerButton] = useState(false);
+
+
+
     return (
         <div className='table'>
             <div className='navbar-container'>
@@ -26,7 +30,7 @@ const Table = props => {
                 <Player />
                 {newPlayerButton ? (
                     <Fragment>
-                        <SetPlayer />
+                        <SetPlayer submitted={() => setNewPlayerButton(false)}/>
                         <button className='btn-add-player-disabled' disabled><i class="fas fa-user-plus"></i></button>
                     </Fragment>
                 ) : (

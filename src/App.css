@@ -127,8 +127,6 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-add-player {
-  /* margin-left: 3rem; */
-  font-family:  Rye;
   font-size: 1.938rem;
   color: black;
   font-weight: 400;
@@ -138,8 +136,6 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-add-player-disabled {
-  /* margin-left: 3rem; */
-  font-family:  Rye;
   font-size: 1.938rem;
   color: gray;
   font-weight: 400;
@@ -171,10 +167,6 @@ input::-webkit-inner-spin-button {
   justify-content: flex-end;
 }
 
-.navbar-container .start {
-  
-}
-
 .navbar-section {
   font-family:  Rye;
   font-size: 1rem;
@@ -188,7 +180,7 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-end-game {
-  font-family:  Rye;
+  font-family:  Special Elite;;
   font-size: 1rem;
   color: black;
   font-weight: 400;
@@ -203,4 +195,47 @@ input::-webkit-inner-spin-button {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+/* Set Player Form */
+
+.form-submit-player {
+  margin: 1rem auto;
+}
+
+.input-submit-player {
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  height: 3rem;
+  border: 1px solid #ccc;
+}
+
+.btn-submit-player-on {
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  color: black;
+  font-weight: 400;
+  background-color: #9cd484;
+  border-color: #9cd484;
+  border: none;
+}
+
+.btn-submit-player-on:hover {
+  color: dodgerblue;
+  cursor: pointer;
+  /* border-style: initial; */
+  border-bottom: 3px solid gray;
+  border-right: 2px solid gray;
+  border-bottom-right-radius: 10%;
+  padding-right: 0.3%;
+}
+
+.btn-submit-player-off {
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  color: gray;
+  font-weight: 400;
+  background-color: #9cd484;
+  border-color: #9cd484;
+  border-style: none;
 }

@@ -12,12 +12,13 @@ export const setMinimal = (sum) => dispatch => {
     }
 };
 
-export const setPlayer = ({ playerName, rebuyCount, lastRebuy, isOut}) => dispatch => {
+export const setPlayer = (playerName) => dispatch => {
     let newPlayer = {
         playerName: playerName,
-        rebuyCount: rebuyCount,
-        lastRebuy: lastRebuy,
-        isOut: isOut
+        rebuyCount: 0,
+        buyIns: 1,
+        lastRebuy: null,
+        isOut: false
     }
     try {
         dispatch({
