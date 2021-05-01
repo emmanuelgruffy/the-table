@@ -29,7 +29,7 @@ const SetPlayer = ({ setPlayer, submitted }) => {
                 {(playerName !== '' && !playerName.match(regex)) ? (
                     <button className='btn-submit-player-on' type='submit'>Create</button>
                 ) : (
-                    <button className='btn-submit-player-off' type='submit'>Create</button>
+                    <button className='btn-submit-player-off' type='submit' disabled>Create</button>
                 )}      
             </form>
         </div>

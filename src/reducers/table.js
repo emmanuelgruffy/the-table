@@ -1,7 +1,7 @@
 import { MINIMAL, NEW_PLAYER } from '../actions/types';
 
 const initialState = {
-    minimalBuyIn: null,
+    minimalBuyIn: 0,
     players: []
 }
 

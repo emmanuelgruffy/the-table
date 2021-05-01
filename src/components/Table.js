@@ -3,22 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'moment';
 import { setPlayer } from '../actions/table';
-import Player from '../components/Player';
 import SetPlayer from './SetPlayer';
+import Player from './Player';
 
 
-const Table = props => {
+const Table = ({ players, minimalBuyIn }) => {
 
     const [newPlayerButton, setNewPlayerButton] = useState(false);
-
-
-
+    let totalBuyIns = 0;
+    if (players.length > 0) {
+        totalBuyIns = players.reduce((accumulator, player) => (accumulator + player.buyIns), 0);
+    }
+    let totalChips = totalBuyIns * minimalBuyIn;
     return (
         <div className='table'>
             <div className='navbar-container'>
                 <div className='navbar-section start'>
-                    <div className='nav-item chips'>Total Chips: </div>
-                    <div className='nav-item buys'>Total Buy-In: </div>
+                    <div className='nav-item chips'>Total Chips: {totalChips}</div> 
+                    <div className='nav-item buys'>Total Buy-In: {totalBuyIns}</div> 
                 </div>
                 <div className='navbar-section end'>
                     <div className='nav-item'>
@@ -27,15 +29,23 @@ const Table = props => {
                 </div>
             </div>
             <section className='content'>
-                <Player />
+                {players.map(({ playerName, buyIns, lastRebuy }, index) =>
+                    <Player
+                        key={index}
+                        playerId={index}
+                        playerName={playerName}
+                        buyIns={buyIns}
+                        lastRebuy={lastRebuy}
+                    />
+                )}
                 {newPlayerButton ? (
                     <Fragment>
-                        <SetPlayer submitted={() => setNewPlayerButton(false)}/>
-                        <button className='btn-add-player-disabled' disabled><i class="fas fa-user-plus"></i></button>
+                        <SetPlayer submitted={() => setNewPlayerButton(false)} />
+                        <button className='btn-add-player-disabled' disabled><i className="fas fa-user-plus"></i></button>
                     </Fragment>
                 ) : (
                     <Fragment>
-                        <button className='btn-add-player' onClick={() => setNewPlayerButton('true')}><i class="fas fa-user-plus"></i></button>
+                        <button className='btn-add-player' onClick={() => setNewPlayerButton('true')}><i className="fas fa-user-plus"></i></button>
                     </Fragment>
                 )}
             </section>
