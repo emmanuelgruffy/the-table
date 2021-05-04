@@ -1,46 +1,66 @@
 import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Moment from 'moment';
 import { setPlayer } from '../actions/table';
 import SetPlayer from './SetPlayer';
 import Player from './Player';
 
 
+
 const Table = ({ players, minimalBuyIn }) => {
 
     const [newPlayerButton, setNewPlayerButton] = useState(false);
+    const [allOut, setAllout] = useState(false);
+
+    const checkIfAllOut = () => {
+        const playersInTheTable = players.filter(player => !player.isOut);
+        if (playersInTheTable.length === 0 && players.length > 0) {
+            setAllout(true);
+        }
+    }
+
     let totalBuyIns = 0;
     if (players.length > 0) {
-        totalBuyIns = players.reduce((accumulator, player) => (accumulator + player.buyIns), 0);
+        totalBuyIns = players.reduce((accumulator, player) => (accumulator + player.rebuyCount + 1), 0);
     }
     let totalChips = totalBuyIns * minimalBuyIn;
+
     return (
         <div className='table'>
             <div className='navbar-container'>
                 <div className='navbar-section start'>
-                    <div className='nav-item chips'>Total Chips: {totalChips}</div> 
-                    <div className='nav-item buys'>Total Buy-In: {totalBuyIns}</div> 
+                    <div className='nav-item chips'>Total Chips: {totalChips}</div>
+                    <div className='nav-item buys'>Total Buy-In: {totalBuyIns}</div>
                 </div>
                 <div className='navbar-section end'>
                     <div className='nav-item'>
-                        <button className='btn-end-game'>End Game</button>
+                        {allOut ?
+                            (<button className='btn-end-game-on'>End Game</button>)
+                            :
+                            (<button className='btn-end-game-off' disabled>End Game</button>)
+                        }
                     </div>
                 </div>
             </div>
             <section className='content'>
-                {players.map(({ playerName, buyIns, lastRebuy }, index) =>
+                {players.filter(player => !player.isOut).map(({ playerId, rebuyCount, playerName, lastRebuy, isOut }, index) =>
                     <Player
                         key={index}
-                        playerId={index}
+                        playerId={playerId}
                         playerName={playerName}
-                        buyIns={buyIns}
                         lastRebuy={lastRebuy}
+                        rebuyCount={rebuyCount}
+                        isOut={isOut}
+                        checkIfAllOut={checkIfAllOut}
                     />
                 )}
                 {newPlayerButton ? (
                     <Fragment>
-                        <SetPlayer submitted={() => setNewPlayerButton(false)} />
+                        <SetPlayer submitted={() => {
+                            setNewPlayerButton(false);
+                            setAllout(false);
+                            }} 
+                            />
                         <button className='btn-add-player-disabled' disabled><i className="fas fa-user-plus"></i></button>
                     </Fragment>
                 ) : (

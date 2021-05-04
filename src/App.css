@@ -29,7 +29,6 @@
   font-weight: 400;
 }
 
-
 /* Landing page */
 
 .landing {
@@ -55,7 +54,6 @@
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
 }
-
 .btn-start:hover {
   cursor: pointer;
 }
@@ -114,7 +112,6 @@ input::-webkit-inner-spin-button {
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
 }
-
 .btn-onboarding-on:hover {
   cursor: pointer;
 }
@@ -135,6 +132,10 @@ input::-webkit-inner-spin-button {
   border-color: #9cd484;
   border-style: none;
 }
+.btn-add-player:hover {
+  cursor: pointer;
+  color: dodgerblue;
+}
 
 .btn-add-player-disabled {
   font-size: 1.938rem !important;;
@@ -143,11 +144,6 @@ input::-webkit-inner-spin-button {
   background-color: #9cd484;
   border-color: #9cd484;
   border-style: none;
-}
-
-.btn-add-player:hover {
-  cursor: pointer;
-  color: dodgerblue;
 }
 
 /* navbar */
@@ -180,7 +176,17 @@ input::-webkit-inner-spin-button {
   width: 25%;
 }
 
-.btn-end-game {
+.btn-end-game-off {
+  font-family:  Special Elite;;
+  font-size: 1.2rem;
+  color: gray;
+  font-weight: 400;
+  background-color: #9cd484;
+  border-color: #9cd484;
+  border-style: none;
+}
+
+.btn-end-game-on {
   font-family:  Special Elite;;
   font-size: 1.2rem;
   color: black;
@@ -188,6 +194,17 @@ input::-webkit-inner-spin-button {
   background-color: #9cd484;
   border-color: #9cd484;
   border-style: none;
+  animation-name: end-game;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+.btn-end-game-on:hover {
+  cursor: pointer;
+}
+@keyframes end-game {
+  from {color: transparent;}
+  to {color: black;}
 }
 
 /* Set Player Form */
@@ -212,12 +229,11 @@ input::-webkit-inner-spin-button {
   border-color: #9cd484;
   border: none;
 }
-
 .btn-submit-player-on:hover {
   color: dodgerblue;
   cursor: pointer;
-  border-bottom: 3px solid gray;
-  border-right: 2px solid gray;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
   border-bottom-right-radius: 10%;
   padding-right: 0.3%;
 }
@@ -237,9 +253,135 @@ input::-webkit-inner-spin-button {
 .player-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin: 0rem 5rem;
+  padding: 2rem;
+}
+.player-row .poker-chip-icons{
+  justify-self: flex-start;
+}
+
+.player-row:hover {
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 5px;
+  animation-name: player-focus;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+@keyframes player-focus {
+  from {background-color: transparent;}
+  to {background-color: #e4fada;}
+}
+
+.row-item:last-child {
+  width: 10%;
+}
+
+.row-item {
+  width: 20%;
+  font-family: Special Elite;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.player-name {
+  font-family: Special Elite;
+  font-size: 1.563rem;
+  font-weight: 400;
+}
+
+.btn-rebuy {
+  height: 1.5rem;
+  width: 2rem;
+  font-family: Special Elite;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 400;
+  margin-left: 2rem;
+  background-color: inherit;
+  border: none;
+}
+.btn-rebuy:hover {
+  color: dodgerblue;
+  cursor: pointer;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom-right-radius: 5px;
+  padding-right: 0.3%;
+}
+
+.tooltip-rebuy {
+  font-size: 1rem;
+  top: -3.5rem;
+  width: 5rem;
+  margin-left: -1rem;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.4rem 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.btn-rebuy:hover .tooltip-rebuy {
+  animation-name: tooltip-visibility;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  visibility: visible;
+}
+@keyframes tooltip-visibility {
+  from {
+    background-color: transparent;
+    color: transparent;
+  }
+  to {
+    background-color: black;
+    color: #fff;
+  }
+}
+
+.btn-checkout {
+  width: 100%;
+  font-family: Special Elite;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .poker-chip-icons {
-  background-image: 'images/chip-icon.jpg';
+  display: inline-block;
+  background-image: url('./images/casino-chips.png'); 
+  background-size: cover;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: auto 0.2rem;
+  animation-name: chip-icon-animation;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+}
+@keyframes chip-icon-animation {
+  from {opacity: 0%;}
+  to {opacity: 100%;}
+}
+
+/* Checkout Pop-Up */
+.form-popup {
+  width: 20% !important;
+  display: flex;
+  flex-direction: row;
+  /* background-color: #eaeaea;
+  z-index: 99;
+  border-style: solid;
+  border-width: thin;
+  border-color: black; */
+}
+
+.form-popup-form {
+  display: flex;
+}
+
+.btns-popup{
+  display: flex;
+  flex-direction: row;
 }

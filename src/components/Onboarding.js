@@ -11,7 +11,7 @@ const Onboarding = ({history, setMinimal}) => {
 
     const handleChange = e => {
         let regex = /^0*$/;
-        setBuyIn(e.target.value);
+        setBuyIn(parseInt(e.target.value));
         setOnOff('-on');
         if ((e.target.value === '') || (e.target.value.match(regex))) {
             setOnOff('-off');
@@ -20,6 +20,7 @@ const Onboarding = ({history, setMinimal}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        console.log(typeof(buyIn));
         setMinimal(buyIn);
         history.push('/table');
     }
