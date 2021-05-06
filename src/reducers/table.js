@@ -36,6 +36,7 @@ export default function(state = initialState, action) {
                 if (state.players[i].playerId === payload.playerId) {
                     state.players[i].isOut = payload.isOut;
                     state.players[i].finalAmount = payload.finalAmount;
+                    state.players[i].balance = (payload.finalAmount - ((state.players[i].rebuyCount + 1) * state.minimalBuyIn));
                     break;
                 }
             }

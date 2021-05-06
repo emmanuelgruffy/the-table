@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const EndGame = ({ players }) => {
+
+    const winnersArray = players.filter(player => player.balance > 0);
+    const losersArray =  players.filter(player => player.balance < 0);
+
+    
+
     return (
-        <div>
-            ENDGAME
+        <div className='end-game'>
+            <div className='end-game-'>
+
+            </div>
         </div>
     )
 }
