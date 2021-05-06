@@ -9,6 +9,7 @@ import './App.css';
 import Landing from './components/Landing';
 import Onboarding from './components/Onboarding';
 import Table from './components/Table';
+import EndGame from './components/EndGame';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
               <Route exact path="/" component={Landing} />
               <Route exact path="/onboarding" component={Onboarding} />
               <Route exact path="/table" component={Table} />
+              <Route exact path="/end-game" component={EndGame} />
             </Switch>
           </section>
         </Fragment>

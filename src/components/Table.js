@@ -6,8 +6,7 @@ import SetPlayer from './SetPlayer';
 import Player from './Player';
 
 
-
-const Table = ({ players, minimalBuyIn }) => {
+const Table = ({ players, minimalBuyIn, history }) => {
 
     const [newPlayerButton, setNewPlayerButton] = useState(false);
     const [allOut, setAllout] = useState(false);
@@ -17,6 +16,10 @@ const Table = ({ players, minimalBuyIn }) => {
         if (playersInTheTable.length === 0 && players.length > 0) {
             setAllout(true);
         }
+    }
+
+    const handleClick = () => {
+        history.push('/end-game');
     }
 
     let totalBuyIns = 0;
@@ -35,7 +38,7 @@ const Table = ({ players, minimalBuyIn }) => {
                 <div className='navbar-section end'>
                     <div className='nav-item'>
                         {allOut ?
-                            (<button className='btn-end-game-on'>End Game</button>)
+                            (<button className='btn-end-game-on' onClick={handleClick}>End Game</button>)
                             :
                             (<button className='btn-end-game-off' disabled>End Game</button>)
                         }

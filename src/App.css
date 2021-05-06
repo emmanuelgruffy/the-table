@@ -7,7 +7,8 @@
 /* Background constant page */
 
 .background {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background-color: #9cd484;
 }
 
@@ -353,8 +354,8 @@ input::-webkit-inner-spin-button {
   display: inline-block;
   background-image: url('./images/casino-chips.png'); 
   background-size: cover;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   margin: auto 0.2rem;
   animation-name: chip-icon-animation;
   animation-duration: 0.6s;
