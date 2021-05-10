@@ -1,377 +1,431 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
 
 /* Background constant page */
 
 .background {
-  min-height: 100vh;
-  height: 100%;
-  background-color: #9cd484;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #9cd484;
 }
 
 .title-section {
-  padding-top: 2rem;
-  text-align: center;
+    padding-top: 2rem;
+    text-align: center;
 }
 
 .title-section h3 {
-  font-family: Special Elite;
-  font-size: 1.938rem;
-  color: #518f36;
-  font-weight: 400;
+    font-family: Special Elite;
+    font-size: 1.938rem;
+    color: #518f36;
+    font-weight: 400;
 }
+
 .title-section h1 {
-  font-family:  Rye;
-  font-size: 4.375rem;
-  color: #518f36;
-  font-weight: 400;
+    font-family: Rye;
+    font-size: 4.375rem;
+    color: #518f36;
+    font-weight: 400;
 }
+
 
 /* Landing page */
 
 .landing {
-  margin: 10rem auto;
-  text-align: center;
-  background-color: #9cd484;
-  z-index: 1;
+    margin: 10rem auto;
+    text-align: center;
+    background-color: #9cd484;
+    z-index: 1;
 }
+
 @keyframes start-button {
-  from {color: transparent;}
-  to {color: black;}
+    from {
+        color: transparent;
+    }
+    to {
+        color: black;
+    }
 }
+
 .btn-start {
-  font-family: Special Elite;
-  font-size: 1.563rem;
-  color: black;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
-  animation-name: start-button;
-  animation-duration: 0.8s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
+    font-family: Special Elite;
+    font-size: 1.563rem;
+    color: black;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
+    animation-name: start-button;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
+
 .btn-start:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 
 /* Onboarding */
 
 .onboarding {
-  margin: 8rem;
-  position: relative;
-  align-items: center;
-  text-align: center;
+    margin: 8rem;
+    position: relative;
+    align-items: center;
+    text-align: center;
+}
+
+.onboarding-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.set-tax {
+    margin-top: 5rem;
 }
 
 .onboarding label {
-  padding-right: 1%;
-  font-family: Special Elite;
-  font-size: 1.563rem;
-  font-weight: 400;
-  color: black;
+    padding-right: 1%;
+    font-family: Special Elite;
+    font-size: 1.563rem;
+    font-weight: 400;
+    color: black;
 }
 
 .onboarding input {
-  margin-right: 1%;
-  font-family: Special Elite;
-  font-size: 1.563rem;
-  height: 3rem;
-  border: 1px solid #ccc;
+    margin-right: 1%;
+    font-family: Special Elite;
+    font-size: 1.563rem;
+    height: 3rem;
+    border: 1px solid #ccc;
 }
 
 .onboarding input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .btn-onboarding-off {
-  font-family: Special Elite;
-  font-size: 1.563rem;
-  color: gray;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
+    font-family: Special Elite;
+    font-size: 1.563rem;
+    color: gray;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
 }
 
 .btn-onboarding-on {
-  font-family: Special Elite;
-  font-size: 1.563rem;
-  color: black;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
-  animation-name: start-button;
-  animation-duration: 0.8s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
+    font-family: Special Elite;
+    font-size: 1.563rem;
+    color: black;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
+    animation-name: start-button;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
+
 .btn-onboarding-on:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 
 /* The Table */
 
-.table, .end-game {
-  margin: auto 2rem;
-  align-items: center;
-  font-size: 1.2rem;
+.table {
+    margin: auto 2rem;
+    align-items: center;
+    font-size: 1.2rem;
 }
 
 .btn-add-player {
-  font-size: 1.938rem !important;
-  color: black;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
+    font-size: 1.938rem !important;
+    color: black;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
 }
+
 .btn-add-player:hover {
-  cursor: pointer;
-  color: dodgerblue;
+    cursor: pointer;
+    color: dodgerblue;
 }
 
 .btn-add-player-disabled {
-  font-size: 1.938rem !important;;
-  color: gray;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
+    font-size: 1.938rem !important;
+    color: gray;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
 }
+
 
 /* navbar */
 
 .navbar-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 3rem;
 }
 
-.chips, .buys {
-  color: #518f36;
+.chips,
+.buys {
+    color: #518f36;
 }
 
 .navbar-container .end {
-  text-align: end;
-  justify-content: flex-end;
+    text-align: end;
+    justify-content: flex-end;
 }
 
 .navbar-section {
-  font-family:  Rye;
-  /* font-size: 1rem; */
-  width: 50%;
-  display: flex;
-  flex-direction: row;
+    font-family: Rye;
+    /* font-size: 1rem; */
+    width: 50%;
+    display: flex;
+    flex-direction: row;
 }
 
 .nav-item {
-  width: 25%;
+    width: 25%;
 }
 
 .btn-end-game-off {
-  font-family:  Special Elite;;
-  font-size: 1.2rem;
-  color: gray;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
 }
 
 .btn-end-game-on {
-  font-family:  Special Elite;;
-  font-size: 1.2rem;
-  color: black;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
-  animation-name: end-game;
-  animation-duration: 0.8s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
+    animation-name: end-game;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
+
 .btn-end-game-on:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 @keyframes end-game {
-  from {color: transparent;}
-  to {color: black;}
+    from {
+        color: transparent;
+    }
+    to {
+        color: black;
+    }
 }
+
 
 /* Set Player Form */
 
 .form-submit-player {
-  margin: 1rem auto;
+    margin: 1rem auto;
 }
 
 .input-submit-player {
-  font-family: Special Elite;
-  font-size: 1.2rem;
-  height: 3rem;
-  border: 1px solid #ccc;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    height: 3rem;
+    border: 1px solid #ccc;
 }
 
 .btn-submit-player-on {
-  font-family: Special Elite;
-  font-size: 1.2rem;
-  color: black;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border: none;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border: none;
 }
+
 .btn-submit-player-on:hover {
-  color: dodgerblue;
-  cursor: pointer;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-  border-bottom-right-radius: 10%;
-  padding-right: 0.3%;
+    color: dodgerblue;
+    cursor: pointer;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-bottom-right-radius: 10%;
+    padding-right: 0.3%;
 }
 
 .btn-submit-player-off {
-  font-family: Special Elite;
-  font-size: 1.2rem;
-  color: gray;
-  font-weight: 400;
-  background-color: #9cd484;
-  border-color: #9cd484;
-  border-style: none;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
 }
+
 
 /* Player */
 
 .player-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0rem 5rem;
-  padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0rem 5rem;
+    padding: 2rem;
 }
-.player-row .poker-chip-icons{
-  justify-self: flex-start;
+
+.player-row .poker-chip-icons {
+    justify-self: flex-start;
 }
 
 .player-row:hover {
-  border-style: outset;
-  border-width: 1px;
-  border-radius: 5px;
-  animation-name: player-focus;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 5px;
+    animation-name: player-focus;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
 }
+
 @keyframes player-focus {
-  from {background-color: transparent;}
-  to {background-color: #e4fada;}
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: #e4fada;
+    }
 }
 
 .row-item:last-child {
-  width: 10%;
+    width: 10%;
 }
 
 .row-item {
-  width: 20%;
-  font-family: Special Elite;
-  font-size: 1.2rem;
-  font-weight: 400;
+    width: 20%;
+    font-family: Rye;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .player-name {
-  font-family: Special Elite;
-  font-size: 1.563rem;
-  font-weight: 400;
+    font-family: Special Elite;
+    font-size: 1.563rem;
+    font-weight: 400;
 }
 
 .btn-rebuy {
-  height: 1.5rem;
-  width: 2rem;
-  font-family: Special Elite;
-  font-size: 1.2rem;
-  color: black;
-  font-weight: 400;
-  margin-left: 2rem;
-  background-color: inherit;
-  border: none;
+    height: 1.5rem;
+    width: 2rem;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 400;
+    margin-left: 2rem;
+    background-color: inherit;
+    border: none;
 }
+
 .btn-rebuy:hover {
-  color: dodgerblue;
-  cursor: pointer;
-  border-bottom: 1px solid gray;
-  border-right: 1px solid gray;
-  border-bottom-right-radius: 5px;
-  padding-right: 0.3%;
+    color: dodgerblue;
+    cursor: pointer;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom-right-radius: 5px;
+    padding-right: 0.3%;
 }
 
 .tooltip-rebuy {
-  font-size: 1rem;
-  top: -3.5rem;
-  width: 5rem;
-  margin-left: -1rem;
-  visibility: hidden;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 0.4rem 0.5rem;
-  position: relative;
-  z-index: 1;
-}
-.btn-rebuy:hover .tooltip-rebuy {
-  animation-name: tooltip-visibility;
-  animation-duration: 0.6s;
-  animation-fill-mode: forwards;
-  visibility: visible;
-}
-@keyframes tooltip-visibility {
-  from {
-    background-color: transparent;
-    color: transparent;
-  }
-  to {
+    font-size: 1rem;
+    top: -3.5rem;
+    width: 5rem;
+    margin-left: -1rem;
+    visibility: hidden;
     background-color: black;
     color: #fff;
-  }
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.4rem 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-rebuy:hover .tooltip-rebuy {
+    animation-name: tooltip-visibility;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    visibility: visible;
+}
+
+@keyframes tooltip-visibility {
+    from {
+        background-color: transparent;
+        color: transparent;
+    }
+    to {
+        background-color: black;
+        color: #fff;
+    }
 }
 
 .btn-checkout {
-  width: 100%;
-  font-family: Special Elite;
-  font-size: 1.2rem;
-  font-weight: 400;
+    width: 100%;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.final-amount-input {
+    width: 75%;
 }
 
 .poker-chip-icons {
-  display: inline-block;
-  background-image: url('./images/casino-chips.png'); 
-  background-size: cover;
-  width: 1.75rem;
-  height: 1.75rem;
-  margin: auto 0.2rem;
-  animation-name: chip-icon-animation;
-  animation-duration: 0.6s;
-  animation-fill-mode: forwards;
-}
-@keyframes chip-icon-animation {
-  from {opacity: 0%;}
-  to {opacity: 100%;}
+    display: inline-block;
+    background-image: url("./images/casino-chips.png");
+    background-size: cover;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: auto 0.2rem;
+    animation-name: chip-icon-animation;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
 }
 
+@keyframes chip-icon-animation {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+
 /* Checkout Pop-Up */
+
 .form-popup {
-  width: 20% !important;
-  display: flex;
-  flex-direction: row;
-  /* background-color: #eaeaea;
+    width: 20% !important;
+    display: flex;
+    flex-direction: row;
+    /* background-color: #eaeaea;
   z-index: 99;
   border-style: solid;
   border-width: thin;
@@ -379,10 +433,87 @@ input::-webkit-inner-spin-button {
 }
 
 .form-popup-form {
-  display: flex;
+    display: flex;
+    flex-direction: column;
 }
 
-.btns-popup{
-  display: flex;
-  flex-direction: row;
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.final-amount-input {
+    padding-left: 0.1rem;
+    width: 75%;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+.btns-popup {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0.1rem;
+}
+
+.btn-submit {
+    border: none;
+    font-size: 2rem;
+    background-color: transparent;
+    margin-left: 0.1rem;
+}
+
+.btn-submit:enabled .check-icon:hover {
+    color: rgb(58, 240, 58);
+    cursor: pointer;
+}
+
+.times-icon:hover {
+    color: rgb(255, 37, 37);
+    cursor: pointer;
+}
+
+.radios {
+    margin-top: 0.25rem;
+}
+
+.tax-label-text {
+    margin-left: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.tax-radios {
+    display: flex;
+    flex-direction: row;
+}
+
+.collector {
+    margin-left: 1rem;
+}
+
+
+/* End-Game */
+
+.end-game {
+    margin: auto 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.end-game-header {
+    margin-top: 3rem;
+}
+
+.end-game-title {
+    font-family: Special Elite;
+    font-size: 1.938rem;
+    font-weight: 400;
+}
+
+.end-game-sub-title {
+    margin-top: 3rem;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    font-weight: 400;
 }
