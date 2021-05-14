@@ -55,6 +55,7 @@ const Table = ({ players, minimalBuyIn, history }) => {
         </div>
       </div>
       <section className="content">
+        {/* TODO: gray out checked out players */}
         {players
           .filter((player) => !player.isOut)
           .map(

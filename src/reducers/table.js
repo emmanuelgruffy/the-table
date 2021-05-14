@@ -24,7 +24,7 @@ export default function (state = initialState, action) {
     case TAX:
       return {
         ...state,
-        taxFee: payload.taxValue,
+        taxFee: payload,
       };
     case NEW_PLAYER:
       return {

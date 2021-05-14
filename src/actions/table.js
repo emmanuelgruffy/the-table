@@ -82,7 +82,7 @@ export const updatePlayerCheckout = (
   let update = {
     playerId: playerId,
     isOut: true,
-    finalAmount: finalAmount - taxFee,
+    finalAmount: finalAmount, // TODO: - separate taxFee from finalAmount
     includeTax: includeTax,
     isTaxCollector: isTaxCollector,
   };

@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setMinimal, setTaxFee } from "../actions/table";
+import { setMinimal } from "../actions/table"; //setTaxFee
 
-const Onboarding = ({ setTaxFee, history, setMinimal }) => {
-  const [taxValue, setTaxValue] = useState("");
+const Onboarding = ({ history, setMinimal }) => {
+  //setTaxFee,
+  //  const [taxValue, setTaxValue] = useState("");
   const [buyIn, setBuyIn] = useState("");
   const [onOff, setOnOff] = useState("-off");
-  const [taxCheck, setTaxCheck] = useState(false);
+  //  const [taxCheck, setTaxCheck] = useState(false);
 
   const handleChange = (e) => {
     let regex = /^0*$/;
@@ -23,9 +24,9 @@ const Onboarding = ({ setTaxFee, history, setMinimal }) => {
     e.preventDefault();
     console.log(typeof buyIn);
     setMinimal(buyIn);
-    if (taxCheck) {
-      setTaxFee(taxValue);
-    }
+    //if (taxCheck) {
+    //  setTaxFee(taxValue);
+    //}
     history.push("/table");
   };
 
@@ -49,12 +50,13 @@ const Onboarding = ({ setTaxFee, history, setMinimal }) => {
             </button>
           )}
         </div>
-        <div className="set-tax">
-          <label>Set Tax?</label>
+        {/*<div className="set-tax">
+          <label className="set-tax-label">Set Tax?</label>
           <input
+            className="set-tax-input"
             type="number"
             min="0"
-            placeholder="This field is optional"
+            placeholder=" This field is optional"
             onChange={(e) => {
               if (e.target.value !== 0 && e.target.value !== NaN) {
                 setTaxCheck(true);
@@ -65,7 +67,7 @@ const Onboarding = ({ setTaxFee, history, setMinimal }) => {
             }}
             value={taxValue}
           />
-        </div>
+        </div>*/}
       </form>
     </div>
   );
@@ -73,7 +75,7 @@ const Onboarding = ({ setTaxFee, history, setMinimal }) => {
 
 Onboarding.propTypes = {
   setMinimal: PropTypes.func.isRequired,
-  setTaxFee: PropTypes.func.isRequired,
+  //  setTaxFee: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setMinimal, setTaxFee })(Onboarding);
+export default connect(null, { setMinimal })(Onboarding); //setTaxFee

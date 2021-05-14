@@ -20,6 +20,7 @@ const Player = ({
   const [finalAmount, setFinalAmount] = useState("");
   const [includeTax, setIncludeTax] = useState(false);
   const [isTaxCollector, setIsTaxCollector] = useState(false);
+  const [taxCollection, setTaxCollection] = useState("");
 
   var chips = [];
   for (let i = 0; i < rebuyCount; i++) {
@@ -79,6 +80,7 @@ const Player = ({
         {chips.map((chip) => (
           <i key={chip} className="poker-chip-icons" />
         ))}
+        {/* TODO: small undo button - to remove one Chip */}
       </div>
       <div className="row-item">
         Last Rebuy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
@@ -117,32 +119,49 @@ const Player = ({
                 </button>
               </div>
             </div>
-            {taxFee > 0 && (
-              <div className="row radios">
-                <div className="tax-radios">
-                  <input
-                    className="tax"
-                    type="radio"
-                    name="tax"
-                    checked={includeTax}
-                    onChange={(e) => setIncludeTax(e.target.checked)}
-                  />
-                  <label className="tax-label-text" htmlFor="tax">
-                    Include Tax
-                  </label>
-                  <input
-                    className="collector"
-                    type="radio"
-                    name="tax"
-                    checked={isTaxCollector}
-                    onChange={(e) => setIsTaxCollector(e.target.checked)}
-                  />
-                  <label className="tax-label-text" htmlFor="tax">
-                    Tax Collector
-                  </label>
-                </div>
+            {/*{taxFee > 0 && (*/}
+            {/*<div className="column checkboxes">
+              <div className="tax-checkboxes">
+                <input
+                  className="tax"
+                  type="checkbox"
+                  name="tax"
+                  checked={includeTax}
+                  onChange={(e) => setIncludeTax(e.target.checked)}
+                />
+                <label className="tax-label-text" htmlFor="tax">
+                  Include Tax
+                </label>
+                <input
+                  className="collector"
+                  type="checkbox"
+                  name="tax"
+                  checked={isTaxCollector}
+                  onChange={(e) => setIsTaxCollector(e.target.checked)}
+                />
+                <label className="tax-label-text" htmlFor="tax">
+                  Tax Collector
+                </label>
               </div>
-            )}
+              {isTaxCollector && (
+                <div className="tax-collector-input">
+                  <input
+                    type="number"
+                    name="collection"
+                    min="0"
+                    value={taxCollection < 0 ? "" : taxCollection}
+                    onChange={(e) => {
+                      if (e.target.value === "" || e.target.value === NaN) {
+                        setTaxCollection(-1);
+                      } else {
+                        setTaxCollection(parseInt(e.target.value));
+                      }
+                    }}
+                  />
+                </div>
+              )}
+            </div>*/}
+            {/*)}*/}
           </form>
         </div>
       ) : (

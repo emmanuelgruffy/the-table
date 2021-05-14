@@ -84,10 +84,6 @@
     flex-direction: column;
 }
 
-.set-tax {
-    margin-top: 5rem;
-}
-
 .onboarding label {
     padding-right: 1%;
     font-family: Special Elite;
@@ -102,6 +98,7 @@
     font-size: 1.563rem;
     height: 3rem;
     border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .onboarding input::-webkit-outer-spin-button,
@@ -136,6 +133,31 @@ input::-webkit-inner-spin-button {
 
 .btn-onboarding-on:hover {
     cursor: pointer;
+}
+
+.set-tax {
+    margin-top: 8rem;
+}
+
+.set-tax-input {
+    border-radius: 5px;
+    width: 15rem;
+    font-size: 1.2rem !important;
+    background-color: #9cd484;
+}
+
+.set-tax-input:focus {
+    background-color: white;
+}
+
+.set-tax-input::placeholder {
+    font-size: 1rem !important;
+    color: rgb(126, 126, 126);
+}
+
+.set-tax-label {
+    font-size: 1.4rem !important;
+    color: #518f36 !important;
 }
 
 
@@ -472,7 +494,7 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
-.radios {
+.checkboxes {
     margin-top: 0.25rem;
 }
 
@@ -481,7 +503,7 @@ input::-webkit-inner-spin-button {
     font-size: 0.85rem;
 }
 
-.tax-radios {
+.tax-checkboxes {
     display: flex;
     flex-direction: row;
 }
