@@ -65,8 +65,23 @@
     animation-direction: alternate-reverse;
 }
 
-.btn-start:hover {
+.btn-start-static {
+    font-family: Special Elite;
+    font-size: 1.563rem;
+    color: black;
+    font-weight: 400;
+    background-color: #9cd484;
+    border-color: #9cd484;
+    border-style: none;
+}
+
+.btn-start:hover,
+.btn-start-static:hover {
     cursor: pointer;
+}
+
+.continue-game {
+    margin-top: 5rem;
 }
 
 
@@ -192,6 +207,15 @@ input::-webkit-inner-spin-button {
     border-style: none;
 }
 
+.warning-popup {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: red;
+    font-family: Rye;
+    font-size: 1.4rem;
+}
+
 
 /* navbar */
 
@@ -205,6 +229,10 @@ input::-webkit-inner-spin-button {
 .chips,
 .buys {
     color: #518f36;
+}
+
+.buys {
+    margin-left: 1rem;
 }
 
 .navbar-container .end {
@@ -221,7 +249,7 @@ input::-webkit-inner-spin-button {
 }
 
 .nav-item {
-    width: 25%;
+    width: 27%;
 }
 
 .btn-end-game-off {
@@ -307,7 +335,8 @@ input::-webkit-inner-spin-button {
 
 /* Player */
 
-.player-row {
+.player-row,
+.player-row-grayedOut {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -348,13 +377,37 @@ input::-webkit-inner-spin-button {
     font-weight: 400;
 }
 
+.buy-ins {
+    width: 15%;
+}
+
+.row-item-chips {
+    width: 15%;
+}
+
+.row-item-undo {
+    padding-left: 1rem;
+    width: 5%;
+}
+
+.row-item-grayedOut {
+    width: 20%;
+    font-family: Rye;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: gray;
+}
+
 .player-name {
+    width: 25%;
     font-family: Special Elite;
     font-size: 1.563rem;
     font-weight: 400;
 }
 
-.btn-rebuy {
+.btn-rebuy,
+.btn-undo,
+.btn-edit-final {
     height: 1.5rem;
     width: 2rem;
     font-family: Special Elite;
@@ -366,7 +419,15 @@ input::-webkit-inner-spin-button {
     border: none;
 }
 
-.btn-rebuy:hover {
+.btn-undo {
+    margin-left: 1rem;
+    font-size: 1rem;
+    opacity: 90%;
+}
+
+.btn-rebuy:hover,
+.btn-undo:hover,
+.btn-edit-final:hover {
     color: dodgerblue;
     cursor: pointer;
     border-bottom: 1px solid gray;
@@ -375,7 +436,9 @@ input::-webkit-inner-spin-button {
     padding-right: 0.3%;
 }
 
-.tooltip-rebuy {
+.tooltip-rebuy,
+.tooltip-undo,
+.tooltip-edit-final {
     font-size: 1rem;
     top: -3.5rem;
     width: 5rem;
@@ -390,7 +453,9 @@ input::-webkit-inner-spin-button {
     z-index: 1;
 }
 
-.btn-rebuy:hover .tooltip-rebuy {
+.btn-rebuy:hover .tooltip-rebuy,
+.btn-undo:hover .tooltip-undo,
+.btn-edit-final:hover .tooltip-edit-final {
     animation-name: tooltip-visibility;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
@@ -421,7 +486,7 @@ input::-webkit-inner-spin-button {
 
 .poker-chip-icons {
     display: inline-block;
-    background-image: url("./images/casino-chips.png");
+    background-image: url("./images/red-chip.png");
     background-size: cover;
     width: 1.75rem;
     height: 1.75rem;
@@ -429,6 +494,16 @@ input::-webkit-inner-spin-button {
     animation-name: chip-icon-animation;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
+}
+
+.poker-chip-icons-transparent {
+    opacity: 40%;
+    display: inline-block;
+    background-image: url("./images/red-chip.png");
+    background-size: cover;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: auto 0.2rem;
 }
 
 @keyframes chip-icon-animation {

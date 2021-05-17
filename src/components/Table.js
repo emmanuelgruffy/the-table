@@ -1,12 +1,28 @@
 import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setPlayer } from "../actions/table";
+import { setTotalChips } from "../actions/table";
 import SetPlayer from "./SetPlayer";
 import Player from "./Player";
 
-const Table = ({ players, minimalBuyIn, history }) => {
+const Table = ({
+  players,
+  minimalBuyIn,
+  history,
+  setTotalChips,
+  totalPlayersBalance,
+}) => {
+  let totalBuyIns = 0;
+  if (players.length > 0) {
+    totalBuyIns = players.reduce(
+      (accumulator, player) => accumulator + player.rebuyCount + 1,
+      0
+    );
+  }
+  let totalChips = totalBuyIns * minimalBuyIn;
+
   useEffect(() => {
+    setTotalChips(totalChips);
     checkIfAllOut();
   });
 
@@ -24,15 +40,6 @@ const Table = ({ players, minimalBuyIn, history }) => {
     history.push("/end-game");
   };
 
-  let totalBuyIns = 0;
-  if (players.length > 0) {
-    totalBuyIns = players.reduce(
-      (accumulator, player) => accumulator + player.rebuyCount + 1,
-      0
-    );
-  }
-  let totalChips = totalBuyIns * minimalBuyIn;
-
   return (
     <div className="table">
       <div className="navbar-container">
@@ -42,7 +49,7 @@ const Table = ({ players, minimalBuyIn, history }) => {
         </div>
         <div className="navbar-section end">
           <div className="nav-item">
-            {allOut ? (
+            {allOut && totalPlayersBalance === totalChips ? (
               <button className="btn-end-game-on" onClick={handleClick}>
                 End Game
               </button>
@@ -54,23 +61,27 @@ const Table = ({ players, minimalBuyIn, history }) => {
           </div>
         </div>
       </div>
+      {allOut && totalPlayersBalance !== totalChips && (
+        <div className="warning-popup">
+          <p>
+            Current balance is {totalPlayersBalance - totalChips}. Must be 0.
+          </p>
+        </div>
+      )}
       <section className="content">
-        {/* TODO: gray out checked out players */}
-        {players
-          .filter((player) => !player.isOut)
-          .map(
-            ({ playerId, rebuyCount, playerName, lastRebuy, isOut }, index) => (
-              <Player
-                key={index}
-                playerId={playerId}
-                playerName={playerName}
-                lastRebuy={lastRebuy}
-                rebuyCount={rebuyCount}
-                isOut={isOut}
-                checkIfAllOut={checkIfAllOut}
-              />
-            )
-          )}
+        {players.map(
+          ({ playerId, rebuyCount, playerName, rebuyTimes, isOut }, index) => (
+            <Player
+              key={index}
+              playerId={playerId}
+              playerName={playerName}
+              rebuyTimes={rebuyTimes}
+              rebuyCount={rebuyCount}
+              isOut={isOut}
+              checkIfAllOut={checkIfAllOut}
+            />
+          )
+        )}
         {newPlayerButton ? (
           <Fragment>
             <SetPlayer
@@ -99,14 +110,16 @@ const Table = ({ players, minimalBuyIn, history }) => {
 };
 
 Table.propTypes = {
-  setPlayer: PropTypes.func.isRequired,
   minimalBuyIn: PropTypes.number.isRequired,
   players: PropTypes.array.isRequired,
+  setTotalChips: PropTypes.func.isRequired,
+  totalPlayersBalance: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   minimalBuyIn: state.table.minimalBuyIn,
   players: state.table.players,
+  totalPlayersBalance: state.table.totalPlayersBalance,
 });
 
-export default connect(mapStateToProps, { setPlayer })(Table);
+export default connect(mapStateToProps, { setTotalChips })(Table);

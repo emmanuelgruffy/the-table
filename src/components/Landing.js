@@ -1,16 +1,45 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-const Landing = props => {
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { startNewGame } from "../actions/table";
+import { connect } from "react-redux";
 
-    return (
-        <Fragment>
-            <div className='landing'>
-                <Link to='/onboarding'>
-                    <button className='btn-start' onClick={() => console.log('clicked')}>Start Game </button>
-                </Link>
-            </div>
-        </Fragment>
-    )
-}
+const Landing = ({ startNewGame, minimalBuyIn }) => {
+  return (
+    <Fragment>
+      <div className="landing">
+        <Link to="/onboarding">
+          <button
+            className={`btn-start${minimalBuyIn > 0 ? "-static" : ""}`}
+            onClick={() => {
+              if (window.localStorage.length > 0) {
+                window.localStorage.clear();
+                startNewGame();
+              }
+            }}
+          >
+            Start New Game{" "}
+          </button>
+        </Link>
+        {minimalBuyIn > 0 && (
+          <div className="continue-game">
+            <Link to="/table">
+              <button className="btn-start">Continue Game</button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </Fragment>
+  );
+};
 
-export default Landing;
+Landing.propTypes = {
+  startNewGame: PropTypes.func.isRequired,
+  minimalBuyIn: PropTypes.number.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  minimalBuyIn: state.table.minimalBuyIn,
+});
+
+export default connect(mapStateToProps, { startNewGame })(Landing);

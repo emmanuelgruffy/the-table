@@ -1,13 +1,26 @@
 import {
+  NEW_GAME,
   MINIMAL,
   NEW_PLAYER,
   REBUY_PLAYER,
+  UNDO_REBUY_PLAYER,
   CHECKOUT_PLAYER,
+  TOTAL_CHIPS,
   TAX,
 } from "./types";
 import { v4 as uuidv4 } from "uuid";
 
-// initiate minimal buy-in:
+export const startNewGame = () => (dispatch) => {
+  try {
+    dispatch({
+      type: NEW_GAME,
+      payload: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const setMinimal = (sum) => (dispatch) => {
   try {
     dispatch({
@@ -36,7 +49,7 @@ export const setPlayer = (playerName) => (dispatch) => {
     playerName: playerName,
     playerId: id,
     rebuyCount: 0,
-    lastRebuy: null,
+    rebuyTimes: [],
     isOut: false,
     includeTax: false,
     finalAmount: 0,
@@ -52,13 +65,24 @@ export const setPlayer = (playerName) => (dispatch) => {
   }
 };
 
-export const updatePlayerRebuy = (playerId, rebuyCount, lastRebuy) => (
+export const setTotalChips = (totalChips) => (dispatch) => {
+  try {
+    dispatch({
+      type: TOTAL_CHIPS,
+      payload: totalChips,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updatePlayerRebuy = (playerId, rebuyCount, newRebuyTime) => (
   dispatch
 ) => {
   let update = {
     playerId: playerId,
     rebuyCount: rebuyCount,
-    lastRebuy: lastRebuy,
+    newRebuyTime: newRebuyTime,
   };
   try {
     dispatch({
@@ -70,21 +94,31 @@ export const updatePlayerRebuy = (playerId, rebuyCount, lastRebuy) => (
   }
 };
 
-export const updatePlayerCheckout = (
+export const updatePlayerUndoRebuy = (
   playerId,
-  finalAmount,
-  taxFee,
-  includeTax,
-  isTaxCollector
+  rebuyCount,
+  updatedRebuyTimes
 ) => (dispatch) => {
-  if (isTaxCollector) {
+  let update = {
+    playerId: playerId,
+    rebuyCount: rebuyCount,
+    updatedRebuyTimes: updatedRebuyTimes,
+  };
+  try {
+    dispatch({
+      type: UNDO_REBUY_PLAYER,
+      payload: update,
+    });
+  } catch (error) {
+    console.log(error);
   }
+};
+
+export const updatePlayerCheckout = (playerId, finalAmount) => (dispatch) => {
   let update = {
     playerId: playerId,
     isOut: true,
-    finalAmount: finalAmount, // TODO: - separate taxFee from finalAmount
-    includeTax: includeTax,
-    isTaxCollector: isTaxCollector,
+    finalAmount: finalAmount,
   };
   try {
     dispatch({

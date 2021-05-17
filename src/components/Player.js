@@ -1,195 +1,181 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
-import { updatePlayerRebuy, updatePlayerCheckout } from "../actions/table";
+import {
+  updatePlayerRebuy,
+  updatePlayerUndoRebuy,
+  updatePlayerCheckout,
+} from "../actions/table";
+import CheckedOutPlayer from "./CheckedOutPlayer";
+import CheckoutForm from "./CheckoutForm";
 
 const Player = ({
   checkIfAllOut,
-  updatePlayerCheckout,
+  updatePlayerUndoRebuy,
   updatePlayerRebuy,
   minimalBuyIn,
-  taxFee,
   playerId,
   playerName,
-  lastRebuy,
+  rebuyTimes,
   rebuyCount,
   isOut,
 }) => {
   const [checkoutFormIsOn, setCheckoutFormIsOn] = useState(false);
-  const [finalAmount, setFinalAmount] = useState("");
-  const [includeTax, setIncludeTax] = useState(false);
-  const [isTaxCollector, setIsTaxCollector] = useState(false);
-  const [taxCollection, setTaxCollection] = useState("");
+  // const [isTaxCollector, setIsTaxCollector] = useState(false);
+  // const [taxCollection, setTaxCollection] = useState("");
 
   var chips = [];
   for (let i = 0; i < rebuyCount; i++) {
     chips[i] = i;
   }
 
+  const lastRebuy =
+    rebuyTimes.length > 0 ? rebuyTimes[rebuyTimes.length - 1] : null;
+
   const playerRebuy = () => {
+    let rebuyAudio = new Audio("/audio/cashmachine.mp3");
+    rebuyAudio.play();
     rebuyCount += 1;
-    lastRebuy = Date.now();
-    updatePlayerRebuy(playerId, rebuyCount, lastRebuy);
+    let newRebuyTime = Date.now();
+    updatePlayerRebuy(playerId, rebuyCount, newRebuyTime);
+  };
+
+  const playerUndoRebuy = () => {
+    rebuyCount -= 1;
+    rebuyTimes.pop();
+    let updatedRebuyTimes = rebuyTimes;
+    updatePlayerUndoRebuy(playerId, rebuyCount, updatedRebuyTimes);
   };
 
   const showCheckoutForm = () => {
     setCheckoutFormIsOn(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let action = e.target.ownerDocument.activeElement.name;
-    if (action === "leave") {
-      if (includeTax) {
-        updatePlayerCheckout(playerId, finalAmount, taxFee, includeTax, false);
-      } else if (isTaxCollector) {
-        updatePlayerCheckout(
-          playerId,
-          finalAmount,
-          0,
-          includeTax,
-          isTaxCollector
-        );
-      } else {
-        updatePlayerCheckout(playerId, finalAmount, 0, includeTax, false);
-      }
-      setCheckoutFormIsOn(false);
-      checkIfAllOut();
-    } else {
-      setCheckoutFormIsOn(false);
-    }
-    setFinalAmount("");
-    setIncludeTax(false);
-    setIsTaxCollector(false);
-  };
-
   return (
-    <div className="player-row">
-      <div className="row-item player-name">
-        {playerName}
-        <button className="btn-rebuy" onClick={playerRebuy}>
-          <i className="fas fa-redo"></i>
-          <span className="tooltip-rebuy">Rebuy</span>
-        </button>
-      </div>
-      <div className="row-item buy-ins">
-        Buy In: {minimalBuyIn + minimalBuyIn * rebuyCount}
-      </div>
-      <div className="row-item">
-        {chips.map((chip) => (
-          <i key={chip} className="poker-chip-icons" />
-        ))}
-        {/* TODO: small undo button - to remove one Chip */}
-      </div>
-      <div className="row-item">
-        Last Rebuy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
-      </div>
-      {checkoutFormIsOn ? (
-        <div className="row-item form-popup">
-          <form className="form-popup-form" onSubmit={(e) => handleSubmit(e)}>
-            <div className="row">
-              <input
-                className="final-amount-input"
-                type="number"
-                min="0"
-                placeholder="Your final amount"
-                value={finalAmount < 0 ? "" : finalAmount}
-                onChange={(e) => {
-                  if (e.target.value === "" || e.target.value === NaN) {
-                    setFinalAmount(-1);
-                  } else {
-                    setFinalAmount(parseInt(e.target.value));
-                  }
-                }}
-              />
-              <div className="btns-popup">
-                <button
-                  className="btn-submit leave"
-                  type="submit"
-                  name="leave"
-                  disabled={
-                    finalAmount === "" || finalAmount < 0 ? true : false
-                  }
-                >
-                  <i className="fas fa-check-square check-icon"></i>
-                </button>
-                <button className="btn-submit stay" type="submit" name="stay">
-                  <i className="fas fa-window-close times-icon"></i>
-                </button>
-              </div>
-            </div>
-            {/*{taxFee > 0 && (*/}
-            {/*<div className="column checkboxes">
-              <div className="tax-checkboxes">
-                <input
-                  className="tax"
-                  type="checkbox"
-                  name="tax"
-                  checked={includeTax}
-                  onChange={(e) => setIncludeTax(e.target.checked)}
-                />
-                <label className="tax-label-text" htmlFor="tax">
-                  Include Tax
-                </label>
-                <input
-                  className="collector"
-                  type="checkbox"
-                  name="tax"
-                  checked={isTaxCollector}
-                  onChange={(e) => setIsTaxCollector(e.target.checked)}
-                />
-                <label className="tax-label-text" htmlFor="tax">
-                  Tax Collector
-                </label>
-              </div>
-              {isTaxCollector && (
-                <div className="tax-collector-input">
-                  <input
-                    type="number"
-                    name="collection"
-                    min="0"
-                    value={taxCollection < 0 ? "" : taxCollection}
-                    onChange={(e) => {
-                      if (e.target.value === "" || e.target.value === NaN) {
-                        setTaxCollection(-1);
-                      } else {
-                        setTaxCollection(parseInt(e.target.value));
-                      }
-                    }}
-                  />
-                </div>
-              )}
-            </div>*/}
-            {/*)}*/}
-          </form>
-        </div>
+    <Fragment>
+      {isOut ? (
+        <CheckedOutPlayer
+          chips={chips}
+          buyIns={minimalBuyIn + minimalBuyIn * rebuyCount}
+          lastRebuy={lastRebuy}
+          playerName={playerName}
+          playerId={playerId}
+        />
       ) : (
-        <div className="row-item">
-          <button className="btn-checkout" onClick={showCheckoutForm}>
-            {" "}
-            Checkout
-          </button>
+        <div className="player-row">
+          <div className="row-item player-name">
+            {playerName}
+            <button className="btn-rebuy" onClick={playerRebuy}>
+              <i className="fas fa-redo"></i>
+              <span className="tooltip-rebuy">Rebuy</span>
+            </button>
+          </div>
+          <div className="row-item buy-ins">
+            Buy In: {minimalBuyIn + minimalBuyIn * rebuyCount}
+          </div>
+          {rebuyCount > 0 && (
+            <div className="row-item-undo">
+              <button className="btn-undo" onClick={playerUndoRebuy}>
+                <i className="fas fa-undo"></i>
+                <span className="tooltip-undo">Undo</span>
+              </button>
+            </div>
+          )}
+          <div className="row-item-chips">
+            {chips.map((chip) => (
+              <i key={chip} className="poker-chip-icons" />
+            ))}
+          </div>
+          <div className="row-item">
+            Last Rebuy:{" "}
+            {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
+          </div>
+          {checkoutFormIsOn ? (
+            <Fragment>
+              <CheckoutForm
+                playerId={playerId}
+                setCheckoutFormIsOn={setCheckoutFormIsOn}
+              />
+            </Fragment>
+          ) : (
+            <div className="row-item">
+              <button className="btn-checkout" onClick={showCheckoutForm}>
+                {" "}
+                Checkout
+              </button>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </Fragment>
   );
 };
 
 Player.propTypes = {
   updatePlayerRebuy: PropTypes.func.isRequired,
+  updatePlayerUndoRebuy: PropTypes.func.isRequired,
   updatePlayerCheckout: PropTypes.func.isRequired,
   rebuyCount: PropTypes.number.isRequired,
   minimalBuyIn: PropTypes.number.isRequired,
-  taxFee: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   minimalBuyIn: state.table.minimalBuyIn,
-  taxFee: state.table.taxFee,
 });
 
 export default connect(mapStateToProps, {
   updatePlayerRebuy,
+  updatePlayerUndoRebuy,
   updatePlayerCheckout,
 })(Player);
+
+{
+  /*{taxFee > 0 && (*/
+}
+{
+  /*<div className="column checkboxes">
+                    <div className="tax-checkboxes">
+                      <input
+                        className="tax"
+                        type="checkbox"
+                        name="tax"
+                        checked={includeTax}
+                        onChange={(e) => setIncludeTax(e.target.checked)}
+                      />
+                      <label className="tax-label-text" htmlFor="tax">
+                        Include Tax
+                      </label>
+                      <input
+                        className="collector"
+                        type="checkbox"
+                        name="tax"
+                        checked={isTaxCollector}
+                        onChange={(e) => setIsTaxCollector(e.target.checked)}
+                      />
+                      <label className="tax-label-text" htmlFor="tax">
+                        Tax Collector
+                      </label>
+                    </div>
+                    {isTaxCollector && (
+                      <div className="tax-collector-input">
+                        <input
+                          type="number"
+                          name="collection"
+                          min="0"
+                          value={taxCollection < 0 ? "" : taxCollection}
+                          onChange={(e) => {
+                            if (e.target.value === "" || e.target.value === NaN) {
+                              setTaxCollection(-1);
+                            } else {
+                              setTaxCollection(parseInt(e.target.value));
+                            }
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>*/
+}
+{
+  /*)}*/
+}
