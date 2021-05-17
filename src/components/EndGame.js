@@ -1,17 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import * as $C from "js-combinatorics/combinatorics";
 
 const EndGame = ({ players }) => {
   const winnersArray = players.filter((player) => player.balance > 0);
   const losersArray = players.filter((player) => player.balance < 0);
 
-  // TODO: form reuslts array which is copy of players.
+  const filteredArray = players.filter(
+    (player) => player.balance > 0 || player.balance < 0
+  );
 
-  // TODO: form all possible groups, i.e (A,B) ... , (A,B,C) .... , etc..
-  // do group validation - i.e group that has only one winner, and losers array is > 0.
-  // sort all valid groups by the players sums ascending (smallest to largest).
+  const combinationArray = [];
 
+  for (let i = 2; i <= filteredArray.length; i++) {
+    let it = new $C.Combination(filteredArray, i);
+    for (let elem of it) {
+      combinationArray.push(elem);
+    }
+  }
+
+  let validatedResultsGroups = combinationArray.filter((arr) => {
+    let countL = 0,
+      countW = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].balance > 0) {
+        countW++;
+      }
+      if (arr[i].balance < 0) {
+        countL++;
+      }
+    }
+    return (countW === 1 && countL > 0) || (countW > 0 && countL === 1);
+  });
+
+  //TODO: sort all valid groups by the players sums ascending (smallest to largest).
   //groups with sum 0 => perfect - calculate debtors and winner from that and remove players from results
   // recalculate valid groups (now without above groups)
   // repeat... untill results array is empty.
