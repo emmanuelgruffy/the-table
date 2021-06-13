@@ -40,6 +40,8 @@ const Table = ({
     history.push("/end-game");
   };
 
+  //TODO: show current time
+
   return (
     <div className="table">
       <div className="navbar-container">
