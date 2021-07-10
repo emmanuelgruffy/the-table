@@ -1,118 +1,144 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import * as $C from "js-combinatorics/combinatorics";
+import {
+  updateDebtorsAndWinner,
+  updateWinnersAndDebtor,
+} from "../actions/table";
+import * as $C from "js-combinatorics";
+import Transaction from "./Transaction";
 
-const EndGame = ({ players }) => {
-  const winnersArray = players.filter((player) => player.balance > 0);
-  const losersArray = players.filter((player) => player.balance < 0);
-
-  const filteredArray = players.filter(
-    (player) => player.balance > 0 || player.balance < 0
-  );
-
-  const combinationArray = [];
-
-  for (let i = 2; i <= filteredArray.length; i++) {
-    let it = new $C.Combination(filteredArray, i);
-    for (let elem of it) {
-      combinationArray.push(elem);
+const EndGame = ({
+  players,
+  updateDebtorsAndWinner,
+  updateWinnersAndDebtor,
+  transactions,
+}) => {
+  useEffect(() => {
+    const filteredArray = players.filter(
+      (player) => player.balance > 0 || player.balance < 0
+    );
+    const reducedFilteredArray = [];
+    for (let i = 0; i < filteredArray.length; i++) {
+      const reducedPlayer = {};
+      reducedPlayer.playerName = filteredArray[i].playerName;
+      reducedPlayer.balance = filteredArray[i].balance;
+      reducedFilteredArray.push(reducedPlayer);
     }
-  }
-
-  function calcArrayBalanceSum(arr) {
-    let arrSum = 0;
-    for (let i = 0; i < arr.length; i++) {
-      arrSum += arr[i].balance;
-    }
-    return arrSum;
-  }
-
-  let validatedResultsGroups = combinationArray.filter((arr) => {
-    let countL = 0,
-      countW = 0;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].balance > 0) {
-        countW++;
-      }
-      if (arr[i].balance < 0) {
-        countL++;
+    const arr = [];
+    for (let i = 2; i <= reducedFilteredArray.length; i++) {
+      let bit = new $C.Combination(reducedFilteredArray, i);
+      for (const elem of bit) {
+        arr.push(sortCombElem(elem));
       }
     }
-    return (countW === 1 && countL > 0) || (countW > 0 && countL === 1);
-  });
 
-  function sortValidated(validatedResultsGroups) {
-    const sortedValidated = validatedResultsGroups.sort((arr1, arr2) => {
-      return (
-        Math.abs(calcArrayBalanceSum(arr1)) -
-        Math.abs(calcArrayBalanceSum(arr2))
-      );
+    let combinationArray = [...arr];
+
+    let validatedResultsGroups = combinationArray.filter((arr) => {
+      let countL = 0,
+        countW = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i].balance > 0) {
+          countW++;
+        }
+        if (arr[i].balance < 0) {
+          countL++;
+        }
+      }
+      return (countW === 1 && countL > 0) || (countW > 0 && countL === 1);
     });
-    return sortedValidated;
-  }
 
-  //here i'm going to calculate which array to remove from filteredArray before repeating the whole process
-  //the array i will remove will be the first debts to creds and will be assigend to a dedicated obj variable and updated in the redux store
-
-  showFirstDebtors(sortValidated(validatedResultsGroups));
-
-  function showFirstDebtors(sortedValidated) {
-    let minBalance = calcArrayBalanceSum(sortedValidated[0]);
-    let maxSizeArray = 0;
-    let indexOfMax = -1;
-    for (let i = 1; i < sortedValidated.length; i++) {
-      if (
-        calcArrayBalanceSum(sortedValidated[i]) === minBalance &&
-        sortedValidated[i].length > maxSizeArray
-      ) {
-        maxSizeArray = sortedValidated[i].length;
-        indexOfMax = i;
-      } else if (calcArrayBalanceSum(sortedValidated[i]) !== minBalance) {
-        console.log(sortedValidated[indexOfMax]);
-        //update obj with the debtors and creditor of sortedValidated[indexOfMax];
+    if (validatedResultsGroups.length > 0) {
+      const firstDebtors = showFirstDebtors(
+        sortValidated(validatedResultsGroups)
+      );
+      if (firstDebtors[1].balance < 0) {
+        /* there are two types of arrays - one winner and many loosers, or one looser and many winners.
+      so if index 1 has a looser - we know for sure there is only one winner - but if index 1 contains a winner - we know for sure there are many winners
+      */
+        updateDebtorsAndWinner(firstDebtors);
+      } else {
+        updateWinnersAndDebtor(firstDebtors);
       }
     }
-  }
 
-  /*
-  const debts = [
-    {
-      debtors: ["p1"],
-    },
-    {
-      debtors: ["p1", "p2"],
-    },
-    {
-      debtors: ["p4", "p5"],
-    },
-  ];
+    function sortCombElem(elem) {
+      const sortedComb = elem.sort((arr1, arr2) => {
+        return arr2.balance - arr1.balance;
+      });
+      return sortedComb;
+    }
 
-  const beneficiers = [
-    {
-      beneficier: ["p3"],
-    },
-    {
-      debtors: ["p1", "p2"],
-    },
-    {
-      debtors: ["p4", "p5"],
-    },
-  ];
-  */
+    function calcArrayBalanceSum(arr) {
+      let arrSum = 0;
+      for (let i = 0; i < arr.length; i++) {
+        arrSum += arr[i].balance;
+      }
+      return arrSum;
+    }
 
-  //TODO:
-  //groups with sum 0 => perfect - calculate debtors and winner from that and remove players from results
-  // recalculate valid groups (now without above groups)
-  // repeat... untill results array is empty.
+    function sortValidated(validatedResultsGroups) {
+      const sortedValidated = validatedResultsGroups.sort((arr1, arr2) => {
+        return (
+          Math.abs(calcArrayBalanceSum(arr1)) -
+          Math.abs(calcArrayBalanceSum(arr2))
+        );
+      });
+      return sortedValidated;
+    }
+
+    //here i'm going to calculate which array to remove from filteredArray before repeating the whole process
+    //the array i will remove will be the first debts to creds and will be assigend to a dedicated obj variable and updated in the redux store
+
+    function showFirstDebtors(sortedValidated) {
+      let minBalance = calcArrayBalanceSum(sortedValidated[0]);
+      let maxSizeArray = 0;
+      let indexOfMax = 0;
+      if (sortedValidated.length === 1) {
+        return sortedValidated[0];
+      }
+      for (let i = 1; i < sortedValidated.length; i++) {
+        if (
+          calcArrayBalanceSum(sortedValidated[i]) === minBalance &&
+          sortedValidated[i].length > maxSizeArray
+        ) {
+          maxSizeArray = sortedValidated[i].length;
+          indexOfMax = i;
+        } else if (calcArrayBalanceSum(sortedValidated[i]) !== minBalance) {
+          return sortedValidated[indexOfMax];
+          //update obj with the debtors and creditor of sortedValidated[indexOfMax];
+        }
+      }
+    }
+
+    //TODO:
+    //groups with sum 0 => perfect - calculate debtors and winner from that and remove players from results
+    // recalculate valid groups (now without above groups)
+    // repeat... untill results array is empty.
+  }, [players]);
 
   return (
     <div className="end-game">
       <div className="end-game-header">
         <h1 className="end-game-title">GOOD GAME EVERYONE!</h1>
-        <h3 className="end-game-sub-title-one">
-          Now time to pay your debts...
-        </h3>
+        <h3 className="end-game-sub-title">Now time to pay your debts...</h3>
+        {transactions !== undefined && (
+          <div>
+            {transactions.map(({ debtor, creditor, sum }, index) => (
+              <Transaction
+                key={index}
+                debtor={debtor}
+                creditor={creditor}
+                sum={sum}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="finish-game">
+        <Link to="/">Exit</Link>
       </div>
     </div>
   );
@@ -120,10 +146,17 @@ const EndGame = ({ players }) => {
 
 EndGame.propTypes = {
   players: PropTypes.array.isRequired,
+  transactions: PropTypes.array.isRequired,
+  updateDebtorsAndWinner: PropTypes.func.isRequired,
+  updateWinnersAndDebtor: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   players: state.table.players,
+  transactions: state.table.transactions,
 });
 
-export default connect(mapStateToProps)(EndGame);
+export default connect(mapStateToProps, {
+  updateDebtorsAndWinner,
+  updateWinnersAndDebtor,
+})(EndGame);

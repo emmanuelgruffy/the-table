@@ -7,6 +7,10 @@ import {
   TAX,
   TOTAL_CHIPS,
   NEW_GAME,
+  UPDATE_TRANSACTIONS,
+  REMOVE_PLAYERS,
+  UPDATE_WINNER_BALANCE,
+  UPDATE_DEBTOR_BALANCE,
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +19,7 @@ const initialState = {
   totalChips: 0,
   totalPlayersBalance: 0,
   players: [],
+  transactions: [],
 };
 
 export default function (state = initialState, action) {
@@ -28,6 +33,7 @@ export default function (state = initialState, action) {
         totalChips: 0,
         totalPlayersBalance: 0,
         players: [],
+        transactions: [],
       };
     case MINIMAL:
       return {
@@ -84,8 +90,8 @@ export default function (state = initialState, action) {
           state.players[i].balance =
             payload.finalAmount -
             (state.players[i].rebuyCount + 1) * state.minimalBuyIn;
-          state.players[i].includeTax = payload.includeTax;
-          state.players[i].isTaxCollector = payload.isTaxCollector;
+          //state.players[i].includeTax = payload.includeTax;
+          //state.players[i].isTaxCollector = payload.isTaxCollector;
           break;
         }
       }
@@ -93,6 +99,48 @@ export default function (state = initialState, action) {
         (accumulator, player) => accumulator + player.finalAmount,
         0
       );
+      return {
+        ...state,
+        players: [...state.players],
+      };
+    case UPDATE_TRANSACTIONS:
+      return {
+        ...state,
+        transactions: [...state.transactions, ...payload],
+      };
+    case REMOVE_PLAYERS:
+      return {
+        ...state,
+        players: [
+          ...state.players.filter((player) => {
+            let count = 0;
+            //we want to return only players that were not found in the player list so
+            // return false if count > 0 meaning player was found in the player list, true otherwise
+            for (let i = 0; i < payload.length; i++) {
+              if (payload[i].playerName === player.playerName) {
+                count++;
+              }
+            }
+            return count === 0;
+          }),
+        ],
+      };
+    case UPDATE_WINNER_BALANCE:
+      for (let i = 0; i < state.players.length; i++) {
+        if (payload.winner === state.players[i].playerName) {
+          state.players[i].balance = payload.winnerBalance;
+        }
+      }
+      return {
+        ...state,
+        players: [...state.players],
+      };
+    case UPDATE_DEBTOR_BALANCE:
+      for (let i = 0; i < state.players.length; i++) {
+        if (payload.debtor === state.players[i].playerName) {
+          state.players[i].balance = payload.debtorBalance;
+        }
+      }
       return {
         ...state,
         players: [...state.players],

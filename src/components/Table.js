@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setTotalChips } from "../actions/table";
+import { setTotalChips, setMinimal } from "../actions/table";
 import SetPlayer from "./SetPlayer";
 import Player from "./Player";
 
@@ -10,6 +10,7 @@ const Table = ({
   minimalBuyIn,
   history,
   setTotalChips,
+  setMinimal,
   totalPlayersBalance,
 }) => {
   let totalBuyIns = 0;
@@ -37,6 +38,7 @@ const Table = ({
   };
 
   const handleClick = () => {
+    setMinimal(0);
     history.push("/end-game");
   };
 
@@ -115,6 +117,7 @@ Table.propTypes = {
   minimalBuyIn: PropTypes.number.isRequired,
   players: PropTypes.array.isRequired,
   setTotalChips: PropTypes.func.isRequired,
+  setMinimal: PropTypes.func.isRequired,
   totalPlayersBalance: PropTypes.number.isRequired,
 };
 
@@ -124,4 +127,4 @@ const mapStateToProps = (state) => ({
   totalPlayersBalance: state.table.totalPlayersBalance,
 });
 
-export default connect(mapStateToProps, { setTotalChips })(Table);
+export default connect(mapStateToProps, { setTotalChips, setMinimal })(Table);

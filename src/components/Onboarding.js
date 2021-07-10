@@ -22,7 +22,6 @@ const Onboarding = ({ history, setMinimal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(typeof buyIn);
     setMinimal(buyIn);
     //if (taxCheck) {
     //  setTaxFee(taxValue);
