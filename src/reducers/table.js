@@ -7,6 +7,7 @@ import {
   TAX,
   TOTAL_CHIPS,
   NEW_GAME,
+  SET_RESULTS,
   UPDATE_TRANSACTIONS,
   REMOVE_PLAYERS,
   UPDATE_WINNER_BALANCE,
@@ -19,6 +20,7 @@ const initialState = {
   totalChips: 0,
   totalPlayersBalance: 0,
   players: [],
+  resultsList: [],
   transactions: [],
 };
 
@@ -33,6 +35,7 @@ export default function (state = initialState, action) {
         totalChips: 0,
         totalPlayersBalance: 0,
         players: [],
+        resultsList: [],
         transactions: [],
       };
     case MINIMAL:
@@ -103,6 +106,15 @@ export default function (state = initialState, action) {
         ...state,
         players: [...state.players],
       };
+    case SET_RESULTS:
+      for (let i = state.resultsList.length; i < state.players.length; i++) {
+        let resultItem = {
+          playerName: state.players[i].playerName,
+          balancedFinalResult: state.players[i].balance,
+        };
+        state.resultsList.push(resultItem);
+      }
+      return { ...state };
     case UPDATE_TRANSACTIONS:
       return {
         ...state,

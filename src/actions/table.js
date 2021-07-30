@@ -7,6 +7,7 @@ import {
   CHECKOUT_PLAYER,
   TOTAL_CHIPS,
   TAX,
+  SET_RESULTS,
   UPDATE_TRANSACTIONS,
   REMOVE_PLAYERS,
   UPDATE_WINNER_BALANCE,
@@ -128,6 +129,16 @@ export const updatePlayerCheckout = (playerId, finalAmount) => (dispatch) => {
     dispatch({
       type: CHECKOUT_PLAYER,
       payload: update,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setResultsList = () => (dispatch) => {
+  try {
+    dispatch({
+      type: SET_RESULTS,
     });
   } catch (error) {
     console.log(error);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setTotalChips, setMinimal } from "../actions/table";
+import { setTotalChips, setMinimal, setResultsList } from "../actions/table";
 import SetPlayer from "./SetPlayer";
 import Player from "./Player";
 
@@ -11,6 +11,8 @@ const Table = ({
   history,
   setTotalChips,
   setMinimal,
+  resultsList,
+  setResultsList,
   totalPlayersBalance,
 }) => {
   let totalBuyIns = 0;
@@ -34,6 +36,13 @@ const Table = ({
     const playersInTheTable = players.filter((player) => !player.isOut);
     if (playersInTheTable.length === 0 && players.length > 0) {
       setAllout(true);
+      if (
+        totalPlayersBalance === totalChips &&
+        resultsList.length !== players.length
+      ) {
+        setResultsList(); // only when end-game is enabled -> we copy from players list the playerName and finalAmount of each player and
+        //move it onto resultList.
+      }
     }
   };
 
@@ -116,8 +125,10 @@ const Table = ({
 Table.propTypes = {
   minimalBuyIn: PropTypes.number.isRequired,
   players: PropTypes.array.isRequired,
+  resultsList: PropTypes.array.isRequired,
   setTotalChips: PropTypes.func.isRequired,
   setMinimal: PropTypes.func.isRequired,
+  setResultsList: PropTypes.func.isRequired,
   totalPlayersBalance: PropTypes.number.isRequired,
 };
 
@@ -125,6 +136,11 @@ const mapStateToProps = (state) => ({
   minimalBuyIn: state.table.minimalBuyIn,
   players: state.table.players,
   totalPlayersBalance: state.table.totalPlayersBalance,
+  resultsList: state.table.resultsList,
 });
 
-export default connect(mapStateToProps, { setTotalChips, setMinimal })(Table);
+export default connect(mapStateToProps, {
+  setTotalChips,
+  setMinimal,
+  setResultsList,
+})(Table);
