@@ -8,7 +8,7 @@ const Transaction = ({ debtor, creditor, sum }) => {
         <h1>{debtor}</h1>
       </div>
       <div className="trans-row-item">
-        <i className="fas fa-hand-holding-usd fa-3x"></i>
+        <i className="fas fa-hand-holding-usd fa-2x hand"></i>
       </div>
       <div className="trans-row-item">
         <h1>{creditor}</h1>

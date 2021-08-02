@@ -604,17 +604,45 @@ input::-webkit-inner-spin-button {
 }
 
 .end-game-title {
-    font-family: Special Elite;
+    font-family: Rye;
     font-size: 3rem;
     font-weight: 400;
+    margin-bottom: 2rem;
 }
 
 .end-game-sub-title {
-    margin-top: 0.5rem;
-    font-family: Special Elite;
-    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: Rye;
+    font-size: 2rem;
     font-weight: 400;
 }
+
+
+/* Results List */
+
+.result-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0rem 25rem 0rem 25rem;
+    padding: 1rem;
+}
+
+.result-item h1 {
+    font-family: Special Elite;
+}
+
+.balance-coins {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+
+/*.balance-coins .coins {
+    margin-top: 0.8rem;
+}*/
 
 
 /* Transactions */
@@ -624,7 +652,7 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
     justify-content: space-between;
     margin: 0rem 20rem;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .transaction-row:hover {
@@ -639,23 +667,27 @@ input::-webkit-inner-spin-button {
 .trans-row-item h1 {
     margin-top: 2rem;
     font-family: Special Elite;
-    font-size: 2.5rem;
+    font-size: 2rem;
+}
+
+.trans-row-item .hand {
+    margin-top: 1rem;
 }
 
 .trans-money {
     display: flex;
     flex-direction: row;
     justify-content: start;
+    margin-top: 0.6rem;
 }
 
 .trans-money h1 {
     margin-top: 1.5rem;
-    font-family: Rye;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .trans-money .coins {
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -8,11 +8,13 @@ import {
 } from "../actions/table";
 import * as $C from "js-combinatorics";
 import Transaction from "./Transaction";
+import ResultItem from "./ResultItem";
 
 const EndGame = ({
   players,
   updateDebtorsAndWinner,
   updateWinnersAndDebtor,
+  resultsList,
   transactions,
 }) => {
   useEffect(() => {
@@ -113,7 +115,7 @@ const EndGame = ({
       }
     }
 
-    //TODO:
+    //DONE:
     //groups with sum 0 => perfect - calculate debtors and winner from that and remove players from results
     // recalculate valid groups (now without above groups)
     // repeat... untill results array is empty.
@@ -122,19 +124,35 @@ const EndGame = ({
   return (
     <div className="end-game">
       <div className="end-game-header">
-        <h1 className="end-game-title">GOOD GAME EVERYONE!</h1>
-        <h3 className="end-game-sub-title">Now time to pay your debts...</h3>
+        <h1 className="end-game-title">Good game everyone!</h1>
         {transactions !== undefined && (
-          <div>
-            {transactions.map(({ debtor, creditor, sum }, index) => (
-              <Transaction
-                key={index}
-                debtor={debtor}
-                creditor={creditor}
-                sum={sum}
-              />
-            ))}
-          </div>
+          <Fragment>
+            <div>
+              {resultsList
+                .sort((a, b) => {
+                  return b.balancedFinalResult - a.balancedFinalResult;
+                })
+                .map(({ playerName, balancedFinalResult }, index) => (
+                  <ResultItem
+                    key={index}
+                    place={index + 1}
+                    playerName={playerName}
+                    balancedFinalResult={balancedFinalResult}
+                  />
+                ))}
+            </div>
+            <h3 className="end-game-sub-title">Time to pay your debts...</h3>
+            <div>
+              {transactions.map(({ debtor, creditor, sum }, index) => (
+                <Transaction
+                  key={index}
+                  debtor={debtor}
+                  creditor={creditor}
+                  sum={sum}
+                />
+              ))}
+            </div>
+          </Fragment>
         )}
       </div>
       <div className="finish-game">
@@ -149,11 +167,13 @@ EndGame.propTypes = {
   transactions: PropTypes.array.isRequired,
   updateDebtorsAndWinner: PropTypes.func.isRequired,
   updateWinnersAndDebtor: PropTypes.func.isRequired,
+  resultsList: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   players: state.table.players,
   transactions: state.table.transactions,
+  resultsList: state.table.resultsList,
 });
 
 export default connect(mapStateToProps, {
