@@ -22,6 +22,7 @@ const Player = ({
   isOut,
 }) => {
   const [checkoutFormIsOn, setCheckoutFormIsOn] = useState(false);
+  const [isLastTwoMinutes, setIsLastTwoMinutes] = useState("");
   // const [isTaxCollector, setIsTaxCollector] = useState(false);
   // const [taxCollection, setTaxCollection] = useState("");
 
@@ -34,10 +35,14 @@ const Player = ({
     rebuyTimes.length > 0 ? rebuyTimes[rebuyTimes.length - 1] : null;
 
   const playerRebuy = () => {
+    setIsLastTwoMinutes("-lastTwoMinutes");
     let rebuyAudio = new Audio("/audio/cashmachine.mp3");
     rebuyAudio.play();
     rebuyCount += 1;
     let newRebuyTime = Date.now();
+    setTimeout(() => {
+      setIsLastTwoMinutes("");
+    }, 120000);
     updatePlayerRebuy(playerId, rebuyCount, newRebuyTime);
   };
 
@@ -83,13 +88,19 @@ const Player = ({
             </div>
           )}
           <div className="row-item-chips">
-            {chips.map((chip) => (
-              <i key={chip} className="poker-chip-icons" />
-            ))}
+            {chips.map((chip, index, arr) =>
+              index < arr.length - 1 ? (
+                <i key={chip} className="poker-chip-icons" />
+              ) : (
+                <i
+                  key={chip}
+                  className={`poker-chip-icons${isLastTwoMinutes}`}
+                />
+              )
+            )}
           </div>
           <div className="row-item">
-            Last Rebuy:{" "}
-            {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
+            Last Buy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
           </div>
           {checkoutFormIsOn ? (
             <Fragment>

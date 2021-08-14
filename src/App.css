@@ -497,6 +497,23 @@ input::-webkit-inner-spin-button {
     animation-fill-mode: forwards;
 }
 
+.poker-chip-icons-lastTwoMinutes {
+    display: inline-block;
+    background-image: url("./images/red-chip.png");
+    background-size: cover;
+    width: 2rem;
+    height: 2rem;
+    margin: auto 0.2rem;
+    animation-name: chip-icon-animation;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    border-style: solid;
+    border-width: thick;
+    border-radius: 100%;
+    border-color: #e5e327;
+    border-inline-color: white;
+}
+
 .poker-chip-icons-transparent {
     opacity: 40%;
     display: inline-block;
