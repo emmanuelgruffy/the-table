@@ -121,9 +121,29 @@ const EndGame = ({
     // repeat... untill results array is empty.
   }, [players]);
 
+  const copyResultsToClipboard = () => {
+    let resultString = "";
+    let transactionString = "";
+
+    for (let i = 0; i < resultsList.length; i++) {
+      resultString += `${resultsList[i].playerName}: ${resultsList[i].balancedFinalResult}\n`;
+    }
+    for (let i = 0; i < transactions.length; i++) {
+      transactionString += `${transactions[i].debtor} --> ${transactions[i].creditor} :: ${transactions[i].sum}\n`;
+    }
+    window.navigator.clipboard.writeText(
+      resultString + "\n" + transactionString
+    );
+  };
+
   return (
-    <div className="end-game">
+    <div className="end-game" onScrollCapture>
       <div className="end-game-header">
+        <button className="btn-clipboard" onClick={copyResultsToClipboard}>
+          Copy results to clipboard
+        </button>
+      </div>
+      <div className="end-game-content">
         <h1 className="end-game-title">Good game everyone!</h1>
         {transactions !== undefined && (
           <Fragment>
@@ -141,6 +161,7 @@ const EndGame = ({
                   />
                 ))}
             </div>
+            <div></div>
             <h3 className="end-game-sub-title">Time to pay your debts...</h3>
             <div>
               {transactions.map(({ debtor, creditor, sum }, index) => (

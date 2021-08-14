@@ -600,6 +600,21 @@ input::-webkit-inner-spin-button {
 }
 
 .end-game-header {
+    display: flex;
+    position: fixed;
+    top: 15rem;
+    right: 2rem;
+}
+
+.btn-clipboard {
+    height: 2rem;
+    width: 18rem;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.btn-clipboard .end-game-content {
     margin-top: 3rem;
 }
 
