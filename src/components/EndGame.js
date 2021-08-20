@@ -137,7 +137,7 @@ const EndGame = ({
   };
 
   return (
-    <div className="end-game" onScrollCapture>
+    <div className="end-game">
       <div className="end-game-header">
         <button className="btn-clipboard" onClick={copyResultsToClipboard}>
           Copy results to clipboard

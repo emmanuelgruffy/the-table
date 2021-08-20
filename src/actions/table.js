@@ -259,13 +259,8 @@ export const updateWinnersAndDebtor = (winnersAndDebtorArray) => (dispatch) => {
       };
       debtAndWin.push(transaction);
       debtorBalance += winnersAndDebtorArray[i].balance; //we update the debtor balance.
-      console.log(debtorBalance);
     } else {
       //the situation is that we have a winner with leftover.
-      console.log(
-        winnersAndDebtorArray[i].playerName,
-        winnersAndDebtorArray[i].balance
-      );
       const transaction = {
         debtor:
           winnersAndDebtorArray[winnersAndDebtorArray.length - 1].playerName,
