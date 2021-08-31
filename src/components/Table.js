@@ -92,6 +92,10 @@ const Table = ({
               rebuyCount={rebuyCount}
               isOut={isOut}
               checkIfAllOut={checkIfAllOut}
+              submitted={() => {
+                setNewPlayerButton(false);
+                setAllout(false);
+              }}
             />
           )
         )}

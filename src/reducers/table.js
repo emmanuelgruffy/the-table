@@ -1,6 +1,7 @@
 import {
   MINIMAL,
   NEW_PLAYER,
+  EDIT_PLAYER,
   REBUY_PLAYER,
   UNDO_REBUY_PLAYER,
   CHECKOUT_PLAYER,
@@ -57,6 +58,17 @@ export default function (state = initialState, action) {
       return {
         ...state,
         players: [...state.players, payload],
+      };
+    case EDIT_PLAYER:
+      for (let i = 0; i < state.players.length; i++) {
+        if (payload.playerId === state.players[i].playerId) {
+          state.players[i].playerName = payload.playerName;
+          break;
+        }
+      }
+      return {
+        ...state,
+        players: [...state.players],
       };
     case REBUY_PLAYER:
       for (let i = 0; i < state.players.length; i++) {

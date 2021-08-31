@@ -343,6 +343,7 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     margin: 0rem 5rem;
     padding: 1rem;
+    align-items: center;
 }
 
 .player-row .poker-chip-icons {
@@ -380,6 +381,7 @@ input::-webkit-inner-spin-button {
 
 .buy-ins {
     width: 15%;
+    font-size: 1.5rem;
 }
 
 .row-item-chips {
@@ -416,8 +418,26 @@ input::-webkit-inner-spin-button {
     color: black;
     font-weight: 400;
     margin-left: 2rem;
+    margin-right: 0.5rem;
     background-color: inherit;
     border: none;
+}
+
+.btn-edit-name {
+    height: 1.5rem;
+    width: 2rem;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 400;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+    background-color: inherit;
+    border: none;
+}
+
+.btn-rebuy {
+    font-size: 1.5rem;
 }
 
 .btn-undo {
@@ -428,7 +448,8 @@ input::-webkit-inner-spin-button {
 
 .btn-rebuy:hover,
 .btn-undo:hover,
-.btn-edit-final:hover {
+.btn-edit-final:hover,
+.btn-edit-name:hover {
     color: dodgerblue;
     cursor: pointer;
     border-bottom: 1px solid gray;
@@ -439,7 +460,8 @@ input::-webkit-inner-spin-button {
 
 .tooltip-rebuy,
 .tooltip-undo,
-.tooltip-edit-final {
+.tooltip-edit-final,
+.tooltip-edit-name {
     font-size: 1rem;
     top: -3.5rem;
     width: 5rem;
@@ -456,7 +478,8 @@ input::-webkit-inner-spin-button {
 
 .btn-rebuy:hover .tooltip-rebuy,
 .btn-undo:hover .tooltip-undo,
-.btn-edit-final:hover .tooltip-edit-final {
+.btn-edit-final:hover .tooltip-edit-final,
+.btn-edit-name:hover .tooltip-edit-name {
     animation-name: tooltip-visibility;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
@@ -501,14 +524,14 @@ input::-webkit-inner-spin-button {
     display: inline-block;
     background-image: url("./images/red-chip.png");
     background-size: cover;
-    width: 2rem;
-    height: 2rem;
+    width: 1.85rem;
+    height: 1.85rem;
     margin: auto 0.2rem;
     animation-name: chip-icon-animation;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
     border-style: solid;
-    border-width: thick;
+    border-width: medium;
     border-radius: 100%;
     border-color: #e5e327;
     border-inline-color: white;
@@ -545,6 +568,12 @@ input::-webkit-inner-spin-button {
   border-style: solid;
   border-width: thin;
   border-color: black; */
+}
+
+.form-popup-edit {
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
 }
 
 .form-popup-form {
@@ -636,8 +665,9 @@ input::-webkit-inner-spin-button {
 }
 
 .end-game-title {
+    margin-top: 1rem;
     font-family: Rye;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 400;
     margin-bottom: 2rem;
 }

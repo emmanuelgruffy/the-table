@@ -2,6 +2,7 @@ import {
   NEW_GAME,
   MINIMAL,
   NEW_PLAYER,
+  EDIT_PLAYER,
   REBUY_PLAYER,
   UNDO_REBUY_PLAYER,
   CHECKOUT_PLAYER,
@@ -64,6 +65,21 @@ export const setPlayer = (playerName) => (dispatch) => {
     dispatch({
       type: NEW_PLAYER,
       payload: newPlayer,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const editPlayer = (playerName, playerId) => (dispatch) => {
+  let playerEdit = {
+    playerName: playerName,
+    playerId: playerId,
+  };
+  try {
+    dispatch({
+      type: EDIT_PLAYER,
+      payload: playerEdit,
     });
   } catch (error) {
     console.log(error);

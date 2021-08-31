@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
@@ -9,6 +9,7 @@ import {
 } from "../actions/table";
 import CheckedOutPlayer from "./CheckedOutPlayer";
 import CheckoutForm from "./CheckoutForm";
+import SetPlayerForm from "./SetPlayerForm";
 
 const Player = ({
   checkIfAllOut,
@@ -20,19 +21,26 @@ const Player = ({
   rebuyTimes,
   rebuyCount,
   isOut,
+  submitted,
 }) => {
   const [checkoutFormIsOn, setCheckoutFormIsOn] = useState(false);
   const [isLastTwoMinutes, setIsLastTwoMinutes] = useState("");
+  const [editPlayerNameOn, setEditPlayerNameOn] = useState(false);
   // const [isTaxCollector, setIsTaxCollector] = useState(false);
   // const [taxCollection, setTaxCollection] = useState("");
 
-  var chips = [];
-  for (let i = 0; i < rebuyCount; i++) {
-    chips[i] = i;
+  if (rebuyCount) {
+    var chips = [];
+    for (let i = 0; i < rebuyCount; i++) {
+      chips[i] = i;
+    }
   }
 
-  const lastRebuy =
-    rebuyTimes.length > 0 ? rebuyTimes[rebuyTimes.length - 1] : null;
+  let lastRebuy;
+  if (rebuyTimes) {
+    lastRebuy =
+      rebuyTimes.length > 0 ? rebuyTimes[rebuyTimes.length - 1] : null;
+  }
 
   const playerRebuy = () => {
     setIsLastTwoMinutes("-lastTwoMinutes");
@@ -70,14 +78,32 @@ const Player = ({
       ) : (
         <div className="player-row">
           <div className="row-item player-name">
-            {playerName}
-            <button className="btn-rebuy" onClick={playerRebuy}>
-              <i className="fas fa-redo"></i>
-              <span className="tooltip-rebuy">Rebuy</span>
-            </button>
+            {editPlayerNameOn ? (
+              <SetPlayerForm
+                editMode={true}
+                setEditPlayerNameOn={setEditPlayerNameOn}
+                playerId={playerId}
+                submitted={() => submitted()}
+              />
+            ) : (
+              <>
+                {playerName}
+                <button
+                  className="btn-edit-name"
+                  onClick={() => setEditPlayerNameOn(true)}
+                >
+                  <i className="fas fa-edit"></i>
+                  <span className="tooltip-edit-name">Edit</span>
+                </button>
+              </>
+            )}
           </div>
+          <button className="btn-rebuy" onClick={playerRebuy}>
+            <i className="fas fa-redo"></i>
+            <span className="tooltip-rebuy">Rebuy</span>
+          </button>
           <div className="row-item buy-ins">
-            Buy In: {minimalBuyIn + minimalBuyIn * rebuyCount}
+            {minimalBuyIn + minimalBuyIn * rebuyCount}
           </div>
           {rebuyCount > 0 && (
             <div className="row-item-undo">
@@ -88,16 +114,18 @@ const Player = ({
             </div>
           )}
           <div className="row-item-chips">
-            {chips.map((chip, index, arr) =>
-              index < arr.length - 1 ? (
-                <i key={chip} className="poker-chip-icons" />
-              ) : (
-                <i
-                  key={chip}
-                  className={`poker-chip-icons${isLastTwoMinutes}`}
-                />
-              )
-            )}
+            <i className="poker-chip-icons" />
+            {chips &&
+              chips.map((chip, index, arr) =>
+                index < arr.length - 1 ? (
+                  <i key={chip} className="poker-chip-icons" />
+                ) : (
+                  <i
+                    key={chip}
+                    className={`poker-chip-icons${isLastTwoMinutes}`}
+                  />
+                )
+              )}
           </div>
           <div className="row-item">
             Last Buy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
@@ -127,11 +155,10 @@ Player.propTypes = {
   updatePlayerRebuy: PropTypes.func.isRequired,
   updatePlayerUndoRebuy: PropTypes.func.isRequired,
   updatePlayerCheckout: PropTypes.func.isRequired,
-  rebuyCount: PropTypes.number.isRequired,
   minimalBuyIn: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   minimalBuyIn: state.table.minimalBuyIn,
 });
 

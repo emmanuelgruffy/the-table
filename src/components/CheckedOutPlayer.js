@@ -18,9 +18,11 @@ const CheckedOutPlayer = ({
       <div className="row-item-grayedOut player-name">{playerName}</div>
       <div className="row-item-grayedOut buy-ins">Buy In: {buyIns}</div>
       <div className="row-item-grayedOut">
-        {chips.map((chip) => (
-          <i key={chip} className="poker-chip-icons-transparent" />
-        ))}
+        {chips &&
+          chips.map((chip) => (
+            <i key={chip} className="poker-chip-icons-transparent" />
+          ))}
+        <i className="poker-chip-icons-transparent" />
       </div>
       <div className="row-item-grayedOut">
         Last Rebuy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
