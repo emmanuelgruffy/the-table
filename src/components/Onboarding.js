@@ -26,14 +26,14 @@ const Onboarding = ({ history, setMinimal }) => {
     //if (taxCheck) {
     //  setTaxFee(taxValue);
     //}
-    if (
-      window.location.href === "http://the-table-beta.herokuapp.com/onboarding"
-    ) {
-      window.location.href = "https://the-table-beta.herokuapp.com/onboarding";
-      history.push("/table");
-    } else {
-      history.push("/table");
-    }
+    //if (
+    //  window.location.href === "http://the-table-beta.herokuapp.com/onboarding"
+    //) {
+    //  window.location.href = "https://the-table-beta.herokuapp.com/onboarding";
+    history.push("/table");
+    //} else {
+    //  history.push("/table");
+    //}
   };
 
   return (
