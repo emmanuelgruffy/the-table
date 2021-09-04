@@ -116,6 +116,10 @@ export default function (state = initialState, action) {
         (accumulator, player) => accumulator + player.finalAmount,
         0
       );
+      state.totalPlayersBalance = state.players.reduce(
+        (accumulator, player) => accumulator + player.balance,
+        0
+      );
       return {
         ...state,
         players: [...state.players],
