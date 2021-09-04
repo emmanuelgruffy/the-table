@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { updatePlayerCheckout } from "../actions/table";
+import {
+  updatePlayerCheckout,
+  updatePlayerFinalResult,
+} from "../actions/table";
 
 const CheckoutForm = ({
   playerId,
   setCheckoutFormIsOn,
   updatePlayerCheckout,
+  updatePlayerFinalResult,
+  editFinalResult = false,
 }) => {
   const [finalAmount, setFinalAmount] = useState("");
 
@@ -14,8 +19,13 @@ const CheckoutForm = ({
     e.preventDefault();
     let action = e.target.ownerDocument.activeElement.name;
     if (action === "leave") {
-      updatePlayerCheckout(playerId, finalAmount);
-      setCheckoutFormIsOn(false);
+      if (editFinalResult) {
+        updatePlayerFinalResult(playerId, finalAmount);
+        setCheckoutFormIsOn(false);
+      } else {
+        updatePlayerCheckout(playerId, finalAmount);
+        setCheckoutFormIsOn(false);
+      }
     } else {
       setCheckoutFormIsOn(false);
     }
@@ -29,9 +39,13 @@ const CheckoutForm = ({
           <input
             className="final-amount-input"
             type="number"
-            min="0"
-            placeholder="Your final amount"
-            value={finalAmount < 0 ? "" : finalAmount}
+            min={!editFinalResult && "0"}
+            placeholder={
+              editFinalResult ? "Your final result" : "your final amount"
+            }
+            value={
+              editFinalResult ? finalAmount : finalAmount < 0 ? "" : finalAmount
+            }
             onChange={(e) => {
               if (e.target.value === "" || e.target.value === NaN) {
                 setFinalAmount(-1);
@@ -45,7 +59,11 @@ const CheckoutForm = ({
               className="btn-submit leave"
               type="submit"
               name="leave"
-              disabled={finalAmount === "" || finalAmount < 0 ? true : false}
+              disabled={
+                !editFinalResult && (finalAmount === "" || finalAmount < 0)
+                  ? true
+                  : false
+              }
             >
               <i className="fas fa-check-square check-icon"></i>
             </button>
@@ -63,4 +81,6 @@ CheckoutForm.propTypes = {
   updatePlayerCheckout: PropTypes.func.isRequired,
 };
 
-export default connect(null, { updatePlayerCheckout })(CheckoutForm);
+export default connect(null, { updatePlayerCheckout, updatePlayerFinalResult })(
+  CheckoutForm
+);

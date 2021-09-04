@@ -27,24 +27,23 @@ const CheckedOutPlayer = ({
       <div className="row-item-grayedOut">
         Last Rebuy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
       </div>
-      <div className="row-item-grayedOut final">
+      <div className="row-item-grayedOut-final">
         Final Result: {player[0].balance}
       </div>
       {checkoutFormIsOn ? (
         <CheckoutForm
           playerId={playerId}
           setCheckoutFormIsOn={setCheckoutFormIsOn}
+          editFinalResult={true}
         />
       ) : (
-        <Fragment>
-          <button
-            className="btn-edit-final"
-            onClick={() => setCheckoutFormIsOn(true)}
-          >
-            <i className="fas fa-edit"></i>
-            <span className="tooltip-edit-final">Edit</span>
-          </button>
-        </Fragment>
+        <button
+          className="btn-edit-final"
+          onClick={() => setCheckoutFormIsOn(true)}
+        >
+          <i className="fas fa-edit"></i>
+          <span className="tooltip-edit-final">Edit Final Result</span>
+        </button>
       )}
     </div>
   );

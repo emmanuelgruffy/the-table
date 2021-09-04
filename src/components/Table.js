@@ -13,6 +13,7 @@ const Table = ({
   setMinimal,
   resultsList,
   setResultsList,
+  totalPlayersFinalAmount,
   totalPlayersBalance,
 }) => {
   let totalBuyIns = 0;
@@ -36,10 +37,7 @@ const Table = ({
     const playersInTheTable = players.filter((player) => !player.isOut);
     if (playersInTheTable.length === 0 && players.length > 0) {
       setAllout(true);
-      if (
-        totalPlayersBalance === totalChips &&
-        resultsList.length !== players.length
-      ) {
+      if (totalPlayersBalance === 0 && resultsList.length !== players.length) {
         setResultsList(); // only when end-game is enabled -> we copy from players list the playerName and finalAmount of each player and
         //move it onto resultList.
       }
@@ -62,7 +60,7 @@ const Table = ({
         </div>
         <div className="navbar-section end">
           <div className="nav-item">
-            {allOut && totalPlayersBalance === totalChips ? (
+            {allOut && totalPlayersBalance === 0 ? (
               <button className="btn-end-game-on" onClick={handleClick}>
                 End Game
               </button>
@@ -74,11 +72,9 @@ const Table = ({
           </div>
         </div>
       </div>
-      {allOut && totalPlayersBalance !== totalChips && (
+      {allOut && totalPlayersBalance !== 0 && (
         <div className="warning-popup">
-          <p>
-            Current balance is {totalPlayersBalance - totalChips}. Must be 0.
-          </p>
+          <p>Current balance is {totalPlayersBalance}. Must be 0.</p>
         </div>
       )}
       <section className="content">
@@ -133,12 +129,14 @@ Table.propTypes = {
   setTotalChips: PropTypes.func.isRequired,
   setMinimal: PropTypes.func.isRequired,
   setResultsList: PropTypes.func.isRequired,
+  totalPlayersFinalAmount: PropTypes.number.isRequired,
   totalPlayersBalance: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   minimalBuyIn: state.table.minimalBuyIn,
   players: state.table.players,
+  totalPlayersFinalAmount: state.table.totalPlayersFinalAmount,
   totalPlayersBalance: state.table.totalPlayersBalance,
   resultsList: state.table.resultsList,
 });

@@ -5,6 +5,7 @@ import {
   REBUY_PLAYER,
   UNDO_REBUY_PLAYER,
   CHECKOUT_PLAYER,
+  EDIT_BALANCE,
   TAX,
   TOTAL_CHIPS,
   NEW_GAME,
@@ -19,6 +20,7 @@ const initialState = {
   taxFee: 0,
   minimalBuyIn: 0,
   totalChips: 0,
+  totalPlayersFinalAmount: 0,
   totalPlayersBalance: 0,
   players: [],
   resultsList: [],
@@ -110,8 +112,24 @@ export default function (state = initialState, action) {
           break;
         }
       }
-      state.totalPlayersBalance = state.players.reduce(
+      state.totalPlayersFinalAmount = state.players.reduce(
         (accumulator, player) => accumulator + player.finalAmount,
+        0
+      );
+      return {
+        ...state,
+        players: [...state.players],
+      };
+    case EDIT_BALANCE:
+      for (let i = 0; i < state.players.length; i++) {
+        if (state.players[i].playerId === payload.playerId) {
+          state.players[i].isOut = payload.isOut;
+          state.players[i].balance = payload.balance;
+          break;
+        }
+      }
+      state.totalPlayersBalance = state.players.reduce(
+        (accumulator, player) => accumulator + player.balance,
         0
       );
       return {

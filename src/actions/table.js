@@ -6,6 +6,7 @@ import {
   REBUY_PLAYER,
   UNDO_REBUY_PLAYER,
   CHECKOUT_PLAYER,
+  EDIT_BALANCE,
   TOTAL_CHIPS,
   TAX,
   SET_RESULTS,
@@ -55,7 +56,7 @@ export const setPlayer = (playerName) => (dispatch) => {
     playerName: playerName,
     playerId: id,
     rebuyCount: 0,
-    rebuyTimes: [],
+    rebuyTimes: [Date.now()],
     isOut: false,
     includeTax: false,
     finalAmount: 0,
@@ -144,6 +145,22 @@ export const updatePlayerCheckout = (playerId, finalAmount) => (dispatch) => {
   try {
     dispatch({
       type: CHECKOUT_PLAYER,
+      payload: update,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updatePlayerFinalResult = (playerId, balance) => (dispatch) => {
+  let update = {
+    playerId: playerId,
+    isOut: true,
+    balance: balance,
+  };
+  try {
+    dispatch({
+      type: EDIT_BALANCE,
       payload: update,
     });
   } catch (error) {

@@ -380,7 +380,7 @@ input::-webkit-inner-spin-button {
 }
 
 .buy-ins {
-    width: 15%;
+    width: 10%;
     font-size: 1.5rem;
 }
 
@@ -393,7 +393,23 @@ input::-webkit-inner-spin-button {
     width: 5%;
 }
 
+.row-item-undo-hidden {
+    padding-left: 1rem;
+    width: 5%;
+    visibility: hidden;
+}
+
 .row-item-grayedOut {
+    width: 20%;
+    font-family: Rye;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: gray;
+}
+
+.row-item-grayedOut-final {
+    display: flex;
+    flex-direction: row;
     width: 20%;
     font-family: Rye;
     font-size: 1.2rem;
@@ -409,7 +425,19 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-rebuy,
-.btn-undo,
+.btn-undo {
+    height: 1.5rem;
+    width: 2rem;
+    font-family: Special Elite;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 400;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+    background-color: inherit;
+    border: none;
+}
+
 .btn-edit-final {
     height: 1.5rem;
     width: 2rem;
@@ -462,6 +490,7 @@ input::-webkit-inner-spin-button {
 .tooltip-undo,
 .tooltip-edit-final,
 .tooltip-edit-name {
+    white-space: nowrap;
     font-size: 1rem;
     top: -3.5rem;
     width: 5rem;
@@ -474,6 +503,10 @@ input::-webkit-inner-spin-button {
     padding: 0.4rem 0.5rem;
     position: relative;
     z-index: 1;
+}
+
+.tooltip-edit-final {
+    margin-left: -4rem;
 }
 
 .btn-rebuy:hover .tooltip-rebuy,

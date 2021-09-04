@@ -105,13 +105,15 @@ const Player = ({
           <div className="row-item buy-ins">
             {minimalBuyIn + minimalBuyIn * rebuyCount}
           </div>
-          {rebuyCount > 0 && (
+          {rebuyCount > 0 ? (
             <div className="row-item-undo">
               <button className="btn-undo" onClick={playerUndoRebuy}>
                 <i className="fas fa-undo"></i>
                 <span className="tooltip-undo">Undo</span>
               </button>
             </div>
+          ) : (
+            <div className="row-item-undo-hidden" />
           )}
           <div className="row-item-chips">
             <i className="poker-chip-icons" />

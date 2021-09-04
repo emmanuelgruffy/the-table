@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setPlayer, editPlayer } from "../actions/table";
 
+//helper
+import { capitalize } from "../helpers/capitalize";
+
 const SetPlayerForm = ({
   setPlayer,
   editPlayer,
@@ -20,9 +23,7 @@ const SetPlayerForm = ({
     if (editMode) {
       let action = e.target.ownerDocument.activeElement.name;
       if (action === "leave") {
-        console.log("i was clicked");
-
-        editPlayer(playerName, playerId);
+        editPlayer(capitalize(playerName), playerId);
         setEditPlayerNameOn(false);
         submitted();
       } else {
@@ -31,7 +32,7 @@ const SetPlayerForm = ({
     } else {
       let action = e.target.ownerDocument.activeElement.name;
       if (action === "leave") {
-        setPlayer(playerName);
+        capitalize(playerName);
       }
     }
   };
