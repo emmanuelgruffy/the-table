@@ -37,7 +37,7 @@ const Onboarding = ({ history, setMinimal }) => {
   };
 
   return (
-    <div className="onboarding">
+    <div className="onboarding page-section">
       <form className="onboarding-form" onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Minimal buy-in:</label>
@@ -48,11 +48,11 @@ const Onboarding = ({ history, setMinimal }) => {
           ></input>
           {buyIn ? (
             <button type="submit" className={`btn-onboarding${onOff}`}>
-              Play!
+              Open Table!
             </button>
           ) : (
             <button type="submit" className={`btn-onboarding${onOff}`} disabled>
-              Play!
+              Open Table!
             </button>
           )}
         </div>

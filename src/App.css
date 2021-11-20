@@ -5,20 +5,40 @@
 }
 
 
-/* Background constant page */
+/* container */
 
-.background {
-    min-height: 100vh;
-    height: 100%;
+.container {
     background-color: #9cd484;
 }
 
+.main-section {
+    background-image: url(./images/poker-dogs.png);
+    background-size: 950px 650px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Background constant page */
+
+.background {
+    background-color: #9cd484;
+}
+
+.page-section {
+    min-height: 100vh;
+    height: 100%;
+}
+
 .title-section {
+    background-color: #9cd484;
     padding-top: 2rem;
     text-align: center;
+    margin-bottom: 0.5rem;
 }
 
 .title-section h3 {
+    background-color: #9cd484;
     font-family: Special Elite;
     font-size: 1.938rem;
     color: #518f36;
@@ -26,6 +46,7 @@
 }
 
 .title-section h1 {
+    background-color: #9cd484;
     font-family: Rye;
     font-size: 4.375rem;
     color: #518f36;
@@ -36,9 +57,8 @@
 /* Landing page */
 
 .landing {
-    margin: 10rem auto;
+    margin: 6rem;
     text-align: center;
-    background-color: #9cd484;
     z-index: 1;
 }
 
@@ -52,11 +72,11 @@
 }
 
 .btn-start {
-    font-family: Special Elite;
-    font-size: 1.563rem;
+    font-family: Eczar;
+    font-size: 2rem;
     color: black;
     font-weight: 400;
-    background-color: #9cd484;
+    background-color: inherit;
     border-color: #9cd484;
     border-style: none;
     animation-name: start-button;
@@ -66,11 +86,11 @@
 }
 
 .btn-start-static {
-    font-family: Special Elite;
-    font-size: 1.563rem;
+    font-family: Eczar;
+    font-size: 2rem;
     color: black;
     font-weight: 400;
-    background-color: #9cd484;
+    background-color: inherit;
     border-color: #9cd484;
     border-style: none;
 }
@@ -88,7 +108,7 @@
 /* Onboarding */
 
 .onboarding {
-    margin: 8rem;
+    margin: 6rem;
     position: relative;
     align-items: center;
     text-align: center;
@@ -101,16 +121,16 @@
 
 .onboarding label {
     padding-right: 1%;
-    font-family: Special Elite;
-    font-size: 1.563rem;
+    font-family: Eczar;
+    font-size: 2rem;
     font-weight: 400;
     color: black;
 }
 
 .onboarding input {
     margin-right: 1%;
-    font-family: Special Elite;
-    font-size: 1.563rem;
+    font-family: Eczar;
+    font-size: 2rem;
     height: 3rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -123,21 +143,21 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-onboarding-off {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.563rem;
     color: gray;
     font-weight: 400;
-    background-color: #9cd484;
+    background-color: inherit;
     border-color: #9cd484;
     border-style: none;
 }
 
 .btn-onboarding-on {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.563rem;
     color: black;
     font-weight: 400;
-    background-color: #9cd484;
+    background-color: inherit;
     border-color: #9cd484;
     border-style: none;
     animation-name: start-button;
@@ -212,9 +232,9 @@ input::-webkit-inner-spin-button {
     margin-top: 1rem;
     margin-bottom: 1rem;
     text-align: center;
-    color: red;
+    color: rgb(226, 240, 39);
     font-family: Rye;
-    font-size: 1.4rem;
+    font-size: 2rem;
 }
 
 
@@ -254,7 +274,7 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-end-game-off {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     color: gray;
     font-weight: 400;
@@ -264,7 +284,7 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-end-game-on {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     color: black;
     font-weight: 400;
@@ -298,14 +318,18 @@ input::-webkit-inner-spin-button {
 }
 
 .input-submit-player {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     height: 3rem;
     border: 1px solid #ccc;
 }
 
+.input-submit-player::placeholder {
+    padding-left: 0.2rem;
+}
+
 .btn-submit-player-on {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     color: black;
     font-weight: 400;
@@ -324,7 +348,7 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-submit-player-off {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     color: gray;
     font-weight: 400;
@@ -342,7 +366,7 @@ input::-webkit-inner-spin-button {
     flex-direction: row;
     justify-content: space-between;
     margin: 0rem 5rem;
-    padding: 1rem;
+    padding: 0.6rem;
     align-items: center;
 }
 
@@ -404,7 +428,7 @@ input::-webkit-inner-spin-button {
     font-family: Rye;
     font-size: 1.2rem;
     font-weight: 400;
-    color: gray;
+    color: rgb(82, 82, 82);
 }
 
 .row-item-grayedOut-final {
@@ -414,21 +438,21 @@ input::-webkit-inner-spin-button {
     font-family: Rye;
     font-size: 1.2rem;
     font-weight: 400;
-    color: gray;
+    color: rgb(82, 82, 82);
 }
 
 .player-name {
     width: 25%;
-    font-family: Special Elite;
-    font-size: 2rem;
+    font-family: Eczar;
+    font-size: 1.7rem;
     font-weight: 400;
 }
 
 .btn-rebuy,
 .btn-undo {
-    height: 1.5rem;
-    width: 2rem;
-    font-family: Special Elite;
+    height: 2rem;
+    width: 2.5rem;
+    font-family: Eczar;
     font-size: 1.2rem;
     color: black;
     font-weight: 400;
@@ -441,7 +465,7 @@ input::-webkit-inner-spin-button {
 .btn-edit-final {
     height: 1.5rem;
     width: 2rem;
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     color: black;
     font-weight: 400;
@@ -452,9 +476,9 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-edit-name {
-    height: 1.5rem;
+    height: 2rem;
     width: 2rem;
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     color: black;
     font-weight: 400;
@@ -492,7 +516,7 @@ input::-webkit-inner-spin-button {
 .tooltip-edit-name {
     white-space: nowrap;
     font-size: 1rem;
-    top: -3.5rem;
+    top: -5rem;
     width: 5rem;
     margin-left: -1rem;
     visibility: hidden;
@@ -500,7 +524,7 @@ input::-webkit-inner-spin-button {
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 0.4rem 0.5rem;
+    padding: 0 0.5rem;
     position: relative;
     z-index: 1;
 }
@@ -510,9 +534,7 @@ input::-webkit-inner-spin-button {
 }
 
 .btn-rebuy:hover .tooltip-rebuy,
-.btn-undo:hover .tooltip-undo,
-.btn-edit-final:hover .tooltip-edit-final,
-.btn-edit-name:hover .tooltip-edit-name {
+.btn-edit-final:hover .tooltip-edit-final {
     animation-name: tooltip-visibility;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
@@ -532,7 +554,6 @@ input::-webkit-inner-spin-button {
 
 .btn-checkout {
     width: 100%;
-    font-family: Special Elite;
     font-size: 1.2rem;
     font-weight: 400;
 }
@@ -571,7 +592,7 @@ input::-webkit-inner-spin-button {
 }
 
 .poker-chip-icons-transparent {
-    opacity: 40%;
+    opacity: 60%;
     display: inline-block;
     background-image: url("./images/red-chip.png");
     background-size: cover;
@@ -688,7 +709,7 @@ input::-webkit-inner-spin-button {
 .btn-clipboard {
     height: 2rem;
     width: 18rem;
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 1.2rem;
     font-weight: 400;
 }
@@ -725,7 +746,7 @@ input::-webkit-inner-spin-button {
 }
 
 .result-item h1 {
-    font-family: Special Elite;
+    font-family: Eczar;
 }
 
 .balance-coins {
@@ -761,7 +782,7 @@ input::-webkit-inner-spin-button {
 
 .trans-row-item h1 {
     margin-top: 2rem;
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 2rem;
 }
 
@@ -789,7 +810,7 @@ input::-webkit-inner-spin-button {
 /* Finish game */
 
 .finish-game {
-    font-family: Special Elite;
+    font-family: Eczar;
     font-size: 2.5rem;
     color: black;
     text-align: end;

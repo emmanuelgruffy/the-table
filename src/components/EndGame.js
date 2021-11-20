@@ -137,7 +137,7 @@ const EndGame = ({
   };
 
   return (
-    <div className="end-game">
+    <div className="end-game page-section">
       <div className="end-game-header">
         <button className="btn-clipboard" onClick={copyResultsToClipboard}>
           Copy results to clipboard

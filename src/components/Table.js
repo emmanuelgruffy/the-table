@@ -52,7 +52,7 @@ const Table = ({
   //TODO: show current time
 
   return (
-    <div className="table">
+    <div className="table page-section">
       <div className="navbar-container">
         <div className="navbar-section start">
           <div className="nav-item chips">Total Chips: {totalChips}</div>
@@ -78,23 +78,29 @@ const Table = ({
         </div>
       )}
       <section className="content">
-        {players.map(
-          ({ playerId, rebuyCount, playerName, rebuyTimes, isOut }, index) => (
-            <Player
-              key={index}
-              playerId={playerId}
-              playerName={playerName}
-              rebuyTimes={rebuyTimes}
-              rebuyCount={rebuyCount}
-              isOut={isOut}
-              checkIfAllOut={checkIfAllOut}
-              submitted={() => {
-                setNewPlayerButton(false);
-                setAllout(false);
-              }}
-            />
+        {/* TODO: - column headlines*/}
+        {players
+          .map(
+            (
+              { playerId, rebuyCount, playerName, rebuyTimes, isOut },
+              index
+            ) => (
+              <Player
+                key={index}
+                playerId={playerId}
+                playerName={playerName}
+                rebuyTimes={rebuyTimes}
+                rebuyCount={rebuyCount}
+                isOut={isOut}
+                checkIfAllOut={checkIfAllOut}
+                submitted={() => {
+                  setNewPlayerButton(false);
+                  setAllout(false);
+                }}
+              />
+            )
           )
-        )}
+          .sort((p1, p2) => p2.props.rebuyCount - p1.props.rebuyCount)}
         {newPlayerButton ? (
           <Fragment>
             <SetPlayer

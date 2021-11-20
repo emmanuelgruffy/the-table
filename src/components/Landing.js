@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 const Landing = ({ startNewGame, minimalBuyIn }) => {
   return (
     <Fragment>
-      <div className="landing">
+      <div className="landing page-section">
         <Link to="/onboarding">
           <button
             className={`btn-start${minimalBuyIn > 0 ? "-static" : ""}`}
@@ -18,13 +18,13 @@ const Landing = ({ startNewGame, minimalBuyIn }) => {
               }
             }}
           >
-            Start New Game{" "}
+            Open New Table{" "}
           </button>
         </Link>
         {minimalBuyIn > 0 && (
           <div className="continue-game">
             <Link to="/table">
-              <button className="btn-start">Continue Game</button>
+              <button className="btn-start">Continue</button>
             </Link>
           </div>
         )}

@@ -21,18 +21,20 @@ const App = () => {
       <PersistGate loading={<div>loading</div>} persistor={persistor}>
         <Router>
           <Fragment>
-            <section className="background">
-              <div className="title-section">
-                <h3>THE</h3>
-                <h1>TABLE</h1>
-              </div>
-              <Switch>
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/onboarding" component={Onboarding} />
-                <Route exact path="/table" component={Table} />
-                <Route exact path="/end-game" component={EndGame} />
-              </Switch>
-            </section>
+            <div className="container">
+              <section className="main-section">
+                <div className="title-section">
+                  <h3>THE</h3>
+                  <h1>TABLE</h1>
+                </div>
+                <Switch>
+                  <Route exact path="/" component={Landing} />
+                  <Route exact path="/onboarding" component={Onboarding} />
+                  <Route exact path="/table" component={Table} />
+                  <Route exact path="/end-game" component={EndGame} />
+                </Switch>
+              </section>
+            </div>
           </Fragment>
         </Router>
       </PersistGate>
