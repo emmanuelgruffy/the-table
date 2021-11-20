@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 //Redux
 //import store from "./store";
-import "./App.css";
+import "./App.scss";
 //Components
 import Landing from "./components/Landing";
 import Onboarding from "./components/Onboarding";

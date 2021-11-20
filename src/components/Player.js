@@ -98,24 +98,24 @@ const Player = ({
               </>
             )}
           </div>
-          <button className="btn-rebuy" onClick={playerRebuy}>
-            <i className="fas fa-redo"></i>
-            <span className="tooltip-rebuy">Rebuy</span>
-          </button>
           <div className="row-item buy-ins">
+            <button className="btn-rebuy" onClick={playerRebuy}>
+              <i className="fas fa-redo"></i>
+              <span className="tooltip-rebuy">Rebuy</span>
+            </button>
             {minimalBuyIn + minimalBuyIn * rebuyCount}
           </div>
-          {rebuyCount > 0 ? (
-            <div className="row-item-undo">
+
+          <div className="row-item-chips">
+            {rebuyCount > 0 ? (
               <button className="btn-undo" onClick={playerUndoRebuy}>
                 <i className="fas fa-undo"></i>
-                <span className="tooltip-undo">Undo</span>
               </button>
-            </div>
-          ) : (
-            <div className="row-item-undo-hidden" />
-          )}
-          <div className="row-item-chips">
+            ) : (
+              <button className="btn-undo-hidden">
+                <i className="fas fa-undo"></i>
+              </button>
+            )}
             <i className="poker-chip-icons" />
             {chips &&
               chips.map((chip, index, arr) =>
