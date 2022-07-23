@@ -50,7 +50,9 @@ const Table = ({
   };
 
   //TODO: show current time
-
+  if (!minimalBuyIn) {
+    history.push("/");
+  }
   return (
     <div className="table page-section">
       <div className="navbar-container">

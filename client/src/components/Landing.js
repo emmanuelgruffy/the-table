@@ -8,9 +8,14 @@ const Landing = ({ startNewGame, minimalBuyIn }) => {
   return (
     <Fragment>
       <div className="landing page-section">
+        <div>
+          <Link className={"btn-start link-menu"} to="join-table">
+            Join Table{" "}
+          </Link>
+        </div>
         <Link to="/onboarding">
           <button
-            className={`btn-start${minimalBuyIn > 0 ? "-static" : ""}`}
+            className={`btn-start-static`}
             onClick={() => {
               if (window.localStorage.length > 0) {
                 window.localStorage.clear();

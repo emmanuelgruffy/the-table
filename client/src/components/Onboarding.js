@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setMinimal } from "../actions/table"; //setTaxFee
 
-const Onboarding = ({ history, setMinimal }) => {
+const Onboarding = ({ history, setMinimal, startedNewGame }) => {
   //setTaxFee,
   //  const [taxValue, setTaxValue] = useState("");
   const [buyIn, setBuyIn] = useState("");
@@ -35,7 +35,9 @@ const Onboarding = ({ history, setMinimal }) => {
     //  history.push("/table");
     //}
   };
-
+  if (!startedNewGame) {
+    history.push("/");
+  }
   return (
     <div className="onboarding page-section">
       <form className="onboarding-form" onSubmit={(e) => handleSubmit(e)}>
@@ -84,4 +86,8 @@ Onboarding.propTypes = {
   //  setTaxFee: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setMinimal })(Onboarding); //setTaxFee
+const mapStateToProps = (state) => ({
+  startedNewGame: state.table.startedNewGame,
+});
+
+export default connect(mapStateToProps, { setMinimal })(Onboarding); //setTaxFee

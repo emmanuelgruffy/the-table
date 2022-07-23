@@ -17,6 +17,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
+  startedNewGame: false,
   taxFee: 0,
   minimalBuyIn: 0,
   totalChips: 0,
@@ -33,6 +34,7 @@ export default function (state = initialState, action) {
   switch (type) {
     case NEW_GAME:
       return {
+        startedNewGame: true,
         taxFee: 0,
         minimalBuyIn: 0,
         totalChips: 0,

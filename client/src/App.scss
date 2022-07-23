@@ -71,6 +71,10 @@
     }
 }
 
+.link-menu {
+    text-decoration: none;
+}
+
 .btn-start {
     font-family: Eczar;
     font-size: 2rem;
@@ -86,6 +90,7 @@
 }
 
 .btn-start-static {
+    margin-top: 3rem;
     font-family: Eczar;
     font-size: 2rem;
     color: black;
