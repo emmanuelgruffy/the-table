@@ -109,24 +109,21 @@ const Player = ({
           <div className="row-item-chips">
             <i className="poker-chip chip-icon-1" />
             {chips &&
-              chips.map((chip, index, arr) => (
-                <>
-                  {index < arr.length - 1 ? (
-                    <i
-                      key={chip} // 0 -> 2 1 -> 3 2 -> 4 3 -> 5 4 -> 6 5 -> 7
-                      className={`poker-chip chip-icon-${(index + 2) % 6}`}
-                    />
-                  ) : (
-                    <i
-                      key={chip}
-                      className={`poker-chip${isLastTwoMinutes} chip-icon-${
-                        (index + 2) % 6
-                      }`}
-                    />
-                  )}
-                  {(index + 2) % 6 === 0 && <div />}
-                </>
-              ))}
+              chips.map((chip, index, arr) =>
+                index < arr.length - 1 ? (
+                  <i
+                    key={chip} // 0 -> 2 1 -> 3 2 -> 4 3 -> 5 4 -> 6 5 -> 7
+                    className={`poker-chip chip-icon-${(index + 2) % 6}`}
+                  />
+                ) : (
+                  <i
+                    key={chip}
+                    className={`poker-chip${isLastTwoMinutes} chip-icon-${
+                      (index + 2) % 6
+                    }`}
+                  />
+                )
+              )}
             {rebuyCount > 0 ? (
               <span>
                 <button className="btn-undo" onClick={playerUndoRebuy}>

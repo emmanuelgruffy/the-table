@@ -25,8 +25,7 @@ const App = () => {
             <div className="container">
               <section className="main-section">
                 <div className="title-section">
-                  <img src={Logo} className="logo-img" />
-                  <h2>Wednesday</h2>
+                  <h2>The Table</h2>
                 </div>
                 <Switch>
                   <Route exact path="/" component={Landing} />

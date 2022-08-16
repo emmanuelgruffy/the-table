@@ -1,63 +1,64 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
 
 /* container */
 
 $backgroundColorMain: #83bd75;
 $backgroundColorNav: #4e944f;
 .container {
-  background-color: $backgroundColorMain;
+    background-color: $backgroundColorMain;
 }
 
 .main-section {
-  background-size: 1100px 650px;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-size: 1100px 650px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 
 /* Background constant page */
 
 .background {
-  background-color: $backgroundColorMain;
+    background-color: $backgroundColorMain;
 }
 
 .page-section {
-  min-height: 100vh;
-  height: 100%;
-  margin: 6rem 6rem 0 6rem;
+    min-height: 100vh;
+    height: 100%;
+    margin: 6rem 6rem 0 6rem;
 }
 
 .title-section {
-  display: flex;
-  justify-content: start;
-  background-color: $backgroundColorNav;
-  text-align: center;
-  align-items: center;
-  padding-left: 2rem;
-}
-
-.logo-img {
-  width: 8%;
+    display: flex;
+    justify-content: start;
+    background-color: $backgroundColorNav;
+    padding-top: 2rem;
+    text-align: center;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .title-section h2 {
-  background-color: $backgroundColorNav;
-  font-family: Poppins;
-  font-size: 3rem;
-  color: whitesmoke;
-  font-weight: 600;
+    background-color: $backgroundColorNav;
+    font-family: Poppins;
+    font-size: 3rem;
+    color: whitesmoke;
+    font-weight: 400;
 }
+
 
 /* Checkout Pop-Up */
 
 .form-popup {
-  width: 20% !important;
-  display: flex;
-  flex-direction: row;
-  /* background-color: #eaeaea;
+    width: 20% !important;
+    display: flex;
+    flex-direction: row;
+    /* background-color: #eaeaea;
   z-index: 99;
   border-style: solid;
   border-width: thin;
@@ -65,65 +66,65 @@ $backgroundColorNav: #4e944f;
 }
 
 .form-popup-edit {
-  width: 100% !important;
-  display: flex;
-  flex-direction: row;
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
 }
 
 .form-popup-form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .final-amount-input {
-  padding-left: 0.1rem;
-  width: 75%;
-  height: 2rem;
-  border-radius: 5px;
+    padding-left: 0.1rem;
+    width: 75%;
+    height: 2rem;
+    border-radius: 5px;
 }
 
 .btns-popup {
-  display: flex;
-  flex-direction: row;
-  margin-left: 0.1rem;
+    display: flex;
+    flex-direction: row;
+    margin-left: 0.1rem;
 }
 
 .btn-submit {
-  border: none;
-  font-size: 2rem;
-  background-color: transparent;
-  margin-left: 0.1rem;
+    border: none;
+    font-size: 2rem;
+    background-color: transparent;
+    margin-left: 0.1rem;
 }
 
 .btn-submit:enabled .check-icon:hover {
-  color: rgb(58, 240, 58);
-  cursor: pointer;
+    color: rgb(58, 240, 58);
+    cursor: pointer;
 }
 
 .times-icon:hover {
-  color: rgb(255, 37, 37);
-  cursor: pointer;
+    color: rgb(255, 37, 37);
+    cursor: pointer;
 }
 
 .checkboxes {
-  margin-top: 0.25rem;
+    margin-top: 0.25rem;
 }
 
 .tax-label-text {
-  margin-left: 0.25rem;
-  font-size: 0.85rem;
+    margin-left: 0.25rem;
+    font-size: 0.85rem;
 }
 
 .tax-checkboxes {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .collector {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }

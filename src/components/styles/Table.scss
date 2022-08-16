@@ -3,246 +3,249 @@
 $fontFamily: Lato;
 $backgroundColorMain: #83bd75;
 .table-page-section {
-  min-height: 100vh;
-  height: 100%;
-  margin: 1rem 1rem 0 6rem;
+    min-height: 100vh;
+    height: 100%;
+    margin: 1rem 1rem 0 6rem;
 }
 
 .btn-add-player {
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 1.25rem;
-  color: black;
-  background-color: inherit;
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+    color: black;
+    background-color: inherit;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
 }
 
 .btn-add-player:hover {
-  cursor: pointer;
-  color: white;
-  border-color: white;
-  transform: translateY(0.75px);
+    cursor: pointer;
+    color: white;
+    border-color: white;
+    transform: translateY(0.75px);
 }
 
 .btn-add-player-disabled {
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 1.25rem;
-  color: gainsboro;
-  background-color: inherit;
-  border: 1px solid gainsboro;
-  border-radius: 8px;
-  padding: 0.5rem 0.75rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+    color: gainsboro;
+    background-color: inherit;
+    border: 1px solid gainsboro;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
 }
 
 .warning-popup {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  text-align: center;
-  color: #ab000d;
-  background-color: #ffebee;
-  font-family: $fontFamily;
-  font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #e2f027;
+    font-family: Lato;
+    font-size: 2rem;
 }
+
 
 /* navbar */
 
 .navbar-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 3rem;
 }
 
 .chips,
 .buys {
-  color: #518f36;
+    color: #518f36;
 }
 
 .buys {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .navbar-container .end {
-  text-align: end;
-  white-space: nowrap;
+    text-align: end;
+    white-space: nowrap;
 }
 
 .navbar-section {
-  font-family: $fontFamily;
-  font-size: 1rem;
+    font-family: $fontFamily;
+    font-size: 1rem;
 }
 
 .nav-item {
-  width: 30%;
+    width: 30%;
 }
 
 .btn-end-game-off {
-  padding: 12px 24px;
-  font-family: $fontFamily;
-  font-size: 1.25rem;
-  color: black;
-  font-weight: 200;
-  background-color: $backgroundColorMain;
-  border: 1px solid black;
-  border-radius: 8px;
+    padding: 12px 24px;
+    font-family: $fontFamily;
+    font-size: 1.25rem;
+    color: black;
+    font-weight: 200;
+    background-color: $backgroundColorMain;
+    border: 1px solid black;
+    border-radius: 8px;
 }
 
 .btn-end-game-on {
-  padding: 12px 24px;
-  font-family: $fontFamily;
-  font-size: 1.25rem;
-  color: white;
-  font-weight: 200;
-  background-color: $backgroundColorMain;
-  border: 1px solid white;
-  border-radius: 8px;
-  animation-name: end-game;
-  animation-duration: 0.8s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
+    padding: 12px 24px;
+    font-family: $fontFamily;
+    font-size: 1.25rem;
+    color: black;
+    font-weight: 200;
+    background-color: $backgroundColorMain;
+    border: 1px solid white;
+    border-radius: 8px;
+    animation-name: end-game;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 .btn-end-game-on:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @keyframes end-game {
-  from {
-    color: transparent;
-  }
-  to {
-    color: white;
-  }
+    from {
+        color: transparent;
+    }
+    to {
+        color: black;
+    }
 }
+
 
 /* Table content*/
 
 .table-content {
-  margin-top: 2rem;
-  display: flex;
-  width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
 }
+
 
 /* Table players content */
 
 .table-players-content {
-  width: 70%;
-  padding-right: 2rem;
+    width: 70%;
+    padding-right: 2rem;
 }
 
 .players-header {
-  display: flex;
-  margin-bottom: 2rem;
+    display: flex;
+    margin-bottom: 2rem;
 }
 
 .ph {
-  font-family: $fontFamily;
-  font-size: 1.5rem;
+    font-family: $fontFamily;
+    font-size: 1.5rem;
 }
 
 .item-pl {
-  width: 20%;
-  margin-right: 0.5rem;
+    width: 20%;
+    margin-right: 0.5rem;
 }
 
 .item-as {
-  width: 15%;
-  margin-right: 0.5rem;
+    width: 15%;
+    margin-right: 0.5rem;
 }
 
 .item-bi {
-  width: 30%;
-  margin-right: 0.5rem;
+    width: 30%;
+    margin-right: 0.5rem;
 }
 
 .item-lb {
-  width: 30%;
-  margin-right: 2rem;
+    width: 30%;
+    margin-right: 2rem;
 }
 
 .players-header-underline {
-  border: 2px solid #0000004d;
+    border: 2px solid #0000004d;
 }
+
 
 /* Stats content */
 
 .table-stats-content {
-  width: 30%;
+    width: 30%;
 }
 
 .ts {
-  font-family: Poppins;
-  font-size: 1.5rem;
+    font-family: Poppins;
+    font-size: 1.5rem;
 }
 
 .ts-box {
-  margin-top: 0.5rem;
-  margin-right: 2rem;
-  margin-bottom: 1.5rem;
-  background-color: #ffffff33;
-  border-radius: 8px;
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+    margin-top: 0.5rem;
+    margin-right: 2rem;
+    margin-bottom: 1.5rem;
+    background-color: #ffffff33;
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .ts-first {
-  margin-top: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .ts-box-value {
-  font-family: Poppins;
-  font-weight: 300;
-  font-size: 4rem;
+    font-family: Poppins;
+    font-weight: 300;
+    font-size: 4rem;
 }
+
 
 /* Set Player Form */
 
 .form-submit-player {
-  margin: 1rem auto;
+    margin: 1rem auto;
 }
 
 .input-submit-player {
-  font-family: $fontFamily;
-  font-weight: 400;
-  font-size: 1.2rem;
-  height: 3rem;
-  border: 1px solid #ccc;
+    font-family: $fontFamily;
+    font-weight: 400;
+    font-size: 1.2rem;
+    height: 3rem;
+    border: 1px solid #ccc;
 }
 
 .input-submit-player::placeholder {
-  padding-left: 0.2rem;
+    padding-left: 0.2rem;
 }
 
 .btn-submit-player-on {
-  margin-left: 0.5rem;
-  font-family: $fontFamily;
-  font-size: 1.2rem;
-  color: black;
-  font-weight: 400;
-  background-color: inherit;
-  border-radius: 8px;
-  border: 1px solid black;
-  padding: 0.5rem 0.5rem;
+    font-family: $fontFamily;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 400;
+    background-color: inherit;
+    border-color: #9cd484;
+    border: none;
 }
 
 .btn-submit-player-on:hover {
-  color: white;
-  cursor: pointer;
-  border-color: white;
+    color: dodgerblue;
+    cursor: pointer;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-bottom-right-radius: 10%;
+    padding-right: 0.3%;
 }
 
 .btn-submit-player-off {
-  margin-left: 0.5rem;
-  font-family: $fontFamily;
-  font-size: 1.2rem;
-  color: gainsboro;
-  font-weight: 400;
-  background-color: inherit;
-  border-radius: 8px;
-  border: 1px solid gainsboro;
-  padding: 0.5rem 0.5rem;
+    font-family: $fontFamily;
+    font-size: 1.2rem;
+    color: gainsboro;
+    font-weight: 400;
+    background-color: inherit;
+    border-color: #9cd484;
+    border-style: none;
 }
