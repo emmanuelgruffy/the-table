@@ -1,0 +1,51 @@
+/* Landing page */
+
+.landing {
+    font-family: Poppins;
+    text-align: center;
+    z-index: 1;
+}
+
+@keyframes start-button {
+    from {
+        color: transparent;
+    }
+    to {
+        color: whitesmoke;
+    }
+}
+
+.btn-start {
+    font-family: Poppins;
+    font-size: 2rem;
+    color: white;
+    font-weight: 400;
+    background-color: inherit;
+    border-color: #9cd484;
+    border-style: none;
+    animation-name: start-button;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+.btn-start-static {
+    font-family: Poppins;
+    font-size: 2rem;
+    color: whitesmoke;
+    font-weight: 400;
+    background-color: inherit;
+    border-color: #9cd484;
+    border-style: none;
+}
+
+.btn-start:hover,
+.btn-start-static:hover {
+    cursor: pointer;
+}
+
+.continue-game {
+    font-family: Poppins;
+    font-weight: 400;
+    margin-top: 5rem;
+}

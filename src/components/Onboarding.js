@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setMinimal } from "../actions/table"; //setTaxFee
+import "./styles/Onboarding.scss";
 
 const Onboarding = ({ history, setMinimal }) => {
   //setTaxFee,

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import CheckoutForm from "./CheckoutForm";
+import "./styles/Player.scss";
 
 const CheckedOutPlayer = ({
   chips,
@@ -18,11 +19,25 @@ const CheckedOutPlayer = ({
       <div className="row-item-grayedOut player-name">{playerName}</div>
       <div className="row-item-grayedOut buy-ins">Buy In: {buyIns}</div>
       <div className="row-item-grayedOut">
+        <i className="poker-chip chip-icon-1" />
         {chips &&
-          chips.map((chip) => (
-            <i key={chip} className="poker-chip-icons-transparent" />
-          ))}
-        <i className="poker-chip-icons-transparent" />
+          chips.map((chip, index, arr) =>
+            index < arr.length - 1 ? (
+              <i
+                key={chip} // 0 -> 2 1 -> 3 2 -> 4 3 -> 5 4 -> 6 5 -> 7
+                className={`poker-chip chip-icon-${
+                  (index + 2) % 6
+                } chip-transparent`}
+              />
+            ) : (
+              <i
+                key={chip}
+                className={`poker-chip chip-icon-${
+                  (index + 2) % 6
+                } chip-transparent`}
+              />
+            )
+          )}
       </div>
       <div className="row-item-grayedOut">
         Last Rebuy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}

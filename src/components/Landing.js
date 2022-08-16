@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { startNewGame } from "../actions/table";
 import { connect } from "react-redux";
+import "../components/styles/Landing.scss";
 
 const Landing = ({ startNewGame, minimalBuyIn }) => {
   return (
