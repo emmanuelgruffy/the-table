@@ -101,7 +101,7 @@ $fontFamily: Lato;
 
 .player-name {
   width: 18%;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .player-name:hover {
@@ -116,7 +116,7 @@ $fontFamily: Lato;
   background-color: inherit;
   border: 1px solid black;
   border-radius: 8px;
-  padding: 0.75rem;
+  padding: 0.5rem;
   visibility: hidden;
 }
 
@@ -155,11 +155,10 @@ $fontFamily: Lato;
 .btn-edit-name {
   height: 2rem;
   width: 2rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: black;
   font-weight: 100;
   margin-left: 0.5rem;
-  margin-right: 0.5rem;
   background-color: inherit;
   border: none;
   visibility: hidden;
