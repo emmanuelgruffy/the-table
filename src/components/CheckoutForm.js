@@ -40,14 +40,12 @@ const CheckoutForm = ({
             className="final-amount-input"
             type="number"
             min={!editFinalResult && "0"}
-            placeholder={
-              editFinalResult ? "Your final result" : "your final amount"
-            }
+            placeholder={editFinalResult ? "final result" : "final amount"}
             value={
               editFinalResult ? finalAmount : finalAmount < 0 ? "" : finalAmount
             }
             onChange={(e) => {
-              if (e.target.value === "" || e.target.value === NaN) {
+              if (e.target.value === "" || isNaN(e.target.value)) {
                 setFinalAmount(-1);
               } else {
                 setFinalAmount(parseInt(e.target.value));

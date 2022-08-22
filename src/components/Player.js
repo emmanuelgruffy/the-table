@@ -11,6 +11,7 @@ import {
 import CheckedOutPlayer from "./CheckedOutPlayer";
 import CheckoutForm from "./CheckoutForm";
 import SetPlayerForm from "./SetPlayerForm";
+import "./styles/Player.scss";
 
 const Player = ({
   checkIfAllOut,
@@ -94,20 +95,53 @@ const Player = ({
                   onClick={() => setEditPlayerNameOn(true)}
                 >
                   <i className="fas fa-edit"></i>
-                  <span className="tooltip-edit-name">Edit</span>
                 </button>
               </>
             )}
           </div>
           <div className="row-item buy-ins">
             <button className="btn-rebuy" onClick={playerRebuy}>
-              <i className="fas fa-redo"></i>
-              <span className="tooltip-rebuy">Rebuy</span>
+              <i class="fas fa-redo"></i>
             </button>
-            {minimalBuyIn + minimalBuyIn * rebuyCount}
-          </div>
 
+            <div>{minimalBuyIn + minimalBuyIn * rebuyCount}</div>
+          </div>
           <div className="row-item-chips">
+            <i className="poker-chip chip-icon-1" />
+            {chips &&
+              chips.map((chip, index, arr) => (
+                <>
+                  {index < arr.length - 1 ? (
+                    <i
+                      key={chip} // 0 -> 2 1 -> 3 2 -> 4 3 -> 5 4 -> 6 5 -> 7
+                      className={`poker-chip chip-icon-${(index + 2) % 6}`}
+                    />
+                  ) : (
+                    <i
+                      key={chip}
+                      className={`poker-chip${isLastTwoMinutes} chip-icon-${
+                        (index + 2) % 6
+                      }`}
+                    />
+                  )}
+                  {(index + 2) % 6 === 0 && <div />}
+                </>
+              ))}
+            {rebuyCount > 0 ? (
+              <span>
+                <button className="btn-undo" onClick={playerUndoRebuy}>
+                  <i className="fas fa-undo"></i>
+                </button>
+              </span>
+            ) : (
+              <span>
+                <button className="btn-undo-hidden">
+                  <i className="fas fa-undo"></i>
+                </button>
+              </span>
+            )}
+          </div>
+          {/*<div className="row-item-undo">
             {rebuyCount > 0 ? (
               <button className="btn-undo" onClick={playerUndoRebuy}>
                 <i className="fas fa-undo"></i>
@@ -117,21 +151,9 @@ const Player = ({
                 <i className="fas fa-undo"></i>
               </button>
             )}
-            <i className="poker-chip-icons" />
-            {chips &&
-              chips.map((chip, index, arr) =>
-                index < arr.length - 1 ? (
-                  <i key={chip} className="poker-chip-icons" />
-                ) : (
-                  <i
-                    key={chip}
-                    className={`poker-chip-icons${isLastTwoMinutes}`}
-                  />
-                )
-              )}
-          </div>
-          <div className="row-item">
-            Last Buy: {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
+          </div>*/}
+          <div className="row-item last-rebuy">
+            {lastRebuy && <Moment format="HH:mm">{lastRebuy}</Moment>}
           </div>
           {checkoutFormIsOn ? (
             <Fragment>
@@ -141,7 +163,7 @@ const Player = ({
               />
             </Fragment>
           ) : (
-            <div className="row-item">
+            <div className="row-item checkout">
               <button className="btn-checkout" onClick={showCheckoutForm}>
                 {" "}
                 Checkout

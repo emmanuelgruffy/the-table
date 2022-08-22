@@ -43,7 +43,7 @@ const SetPlayerForm = ({
           <input
             className="final-amount-input"
             type="text"
-            placeholder="Player Name"
+            placeholder={editMode ? "Name" : "Player Name"}
             value={playerName}
             onChange={(e) => {
               if (e.target.value === "") {

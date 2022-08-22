@@ -1,0 +1,320 @@
+/* Player */
+
+$fontFamily: Lato;
+.player-row,
+.player-row-grayedOut {
+  display: flex;
+  flex-direction: row;
+  padding: 0.6rem;
+  align-items: center;
+  background: #ffffff08;
+  border-bottom: 1px solid #00000026;
+}
+
+.player-row .poker-chip-icons {
+  justify-self: flex-start;
+}
+
+.player-row:hover {
+  border: 0.75px solid #ffc82d;
+  border-radius: 5px;
+  animation-name: player-focus;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  .btn-checkout,
+  .btn-rebuy,
+  .btn-undo {
+    visibility: visible;
+  }
+}
+
+@keyframes player-focus {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: #ffffff26;
+  }
+}
+
+.row-item:last-child {
+  width: 15%;
+}
+
+.row-item {
+  width: 20%;
+  color: #eaeaea;
+  font-family: $fontFamily;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.buy-ins {
+  width: 12%;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.row-item-chips {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin-left: 3rem;
+  width: 32%;
+}
+
+.row-item-undo {
+  padding-right: 3.5rem;
+  width: 5%;
+}
+
+.last-rebuy {
+  width: 15%;
+  font-size: 2rem;
+}
+
+.row-item-undo-hidden {
+  padding-left: 1rem;
+  width: 10%;
+  visibility: visible;
+}
+
+.row-item-grayedOut {
+  width: 20%;
+  font-family: $fontFamily;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #525252;
+}
+
+.row-item-grayedOut-final {
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  font-family: $fontFamily;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #525252;
+}
+
+.player-name {
+  width: 18%;
+  font-size: 1.7rem;
+}
+
+.player-name:hover {
+  .btn-edit-name {
+    visibility: visible;
+  }
+}
+
+.btn-rebuy {
+  margin-right: 1rem;
+  color: black;
+  background-color: inherit;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0.75rem;
+  visibility: hidden;
+}
+
+.btn-rebuy:hover {
+  cursor: pointer;
+  color: white;
+  border-color: white;
+  transform: translateY(0.75px);
+}
+
+.btn-undo,
+.btn-undo-hidden {
+  //margin-left: 1rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  color: black;
+  background-color: transparent;
+  border: solid 1px black;
+  border-radius: 50px;
+  visibility: hidden;
+}
+
+.btn-edit-final {
+  height: 1.5rem;
+  width: 2rem;
+  font-family: $fontFamily;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 400;
+  margin-left: 2rem;
+  margin-right: 0.5rem;
+  background-color: inherit;
+  border: none;
+}
+
+.btn-edit-name {
+  height: 2rem;
+  width: 2rem;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 100;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  background-color: inherit;
+  border: none;
+  visibility: hidden;
+}
+
+.btn-undo:hover {
+  cursor: pointer;
+  border-color: white;
+  color: white;
+}
+
+.btn-edit-final:hover,
+.btn-checkout:hover,
+.btn-edit-name:hover {
+  cursor: pointer;
+}
+
+.tooltip-rebuy,
+.tooltip-undo,
+.tooltip-edit-final,
+.tooltip-edit-name {
+  white-space: nowrap;
+  font-size: 1rem;
+  top: -4.5rem;
+  width: 5rem;
+  margin-left: -0.5rem;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tooltip-edit-final {
+  margin-left: -4rem;
+}
+
+.btn-rebuy:hover .tooltip-rebuy,
+.btn-edit-final:hover .tooltip-edit-final {
+  animation-name: tooltip-visibility;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  visibility: visible;
+}
+
+@keyframes tooltip-visibility {
+  from {
+    background-color: transparent;
+    color: transparent;
+  }
+  to {
+    background-color: black;
+    color: #fff;
+  }
+}
+
+.checkout {
+  padding-right: 3rem;
+}
+
+.btn-checkout {
+  visibility: hidden;
+  color: black;
+  background-color: inherit;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0.75rem 1.75rem;
+  font-family: $fontFamily;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.btn-checkout:hover {
+  color: white;
+  border-color: white;
+}
+
+.final-amount-input {
+  width: 75%;
+}
+
+.poker-chip {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: auto 0.2rem;
+  border-radius: 50%;
+}
+
+.chip-icon-1 {
+  background: #f8cd53;
+}
+
+.chip-icon-2 {
+  background: #f2a13a;
+}
+
+.chip-icon-3 {
+  background: #ef7d31;
+}
+
+.chip-icon-4 {
+  background: #d25324;
+}
+
+.chip-icon-5 {
+  background: #bd341c;
+}
+
+.chip-icon-0 {
+  background: #7a160f;
+}
+
+.poker-chip-icons {
+  display: inline-block;
+  // background-image: url("./images/red-chip.png");
+  background-size: cover;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: auto 0.2rem;
+  animation-name: chip-icon-animation;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+}
+
+.poker-chip-lastTwoMinutes {
+  display: inline-block;
+  width: 1.9rem;
+  height: 1.9rem;
+  margin: auto 0.2rem;
+  animation-name: chip-icon-animation;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  border-style: solid;
+  border-width: medium;
+  border-radius: 50%;
+  border-color: white;
+}
+
+.chip-transparent {
+  opacity: 60%;
+  display: inline-block;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: auto 0.2rem;
+}
+
+@keyframes chip-icon-animation {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}

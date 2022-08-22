@@ -1,0 +1,135 @@
+/* End-Game */
+
+$font: Lato;
+$headerFont: Poppins;
+
+.end-game {
+  margin: 2rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.end-game-header {
+  display: flex;
+  position: fixed;
+  top: 15rem;
+  right: 2rem;
+}
+
+.btn-clipboard {
+  height: 2rem;
+  width: 18rem;
+  font-family: $font;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.btn-clipboard .end-game-content {
+  margin-top: 3rem;
+}
+
+.end-game-title {
+  margin-top: 1rem;
+  font-family: $headerFont;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.end-game-sub-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: $headerFont;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+/* Results List */
+
+.result-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0rem 25rem 0rem 25rem;
+  padding: 1rem;
+}
+
+.result-item h1 {
+  font-family: $font;
+}
+
+.balance-coins {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+/*.balance-coins .coins {
+    margin-top: 0.8rem;
+}*/
+
+/* Transactions */
+
+.transaction-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0rem 20rem;
+  padding: 1rem;
+}
+
+.transaction-row:hover {
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 5px;
+  animation-name: player-focus;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+.trans-row-item h1 {
+  margin-top: 2rem;
+  font-family: $font;
+  font-size: 2rem;
+}
+
+.trans-row-item .hand {
+  margin-top: 1rem;
+}
+
+.trans-money {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-top: 0.6rem;
+}
+
+.trans-money h1 {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+}
+
+.trans-money .coins {
+  margin-top: 1.5rem;
+}
+
+/* Finish game */
+
+.finish-game {
+  font-family: $font;
+  font-size: 2.5rem;
+  color: black;
+  text-align: end;
+  margin-right: 3rem;
+  padding-bottom: 3rem;
+}
+
+.finish-game a {
+  text-decoration: none;
+  animation-name: start-button;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}

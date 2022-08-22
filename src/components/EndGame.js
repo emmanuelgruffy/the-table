@@ -9,6 +9,7 @@ import {
 import * as $C from "js-combinatorics";
 import Transaction from "./Transaction";
 import ResultItem from "./ResultItem";
+import "./styles/EndGame.scss";
 
 const EndGame = ({
   players,
