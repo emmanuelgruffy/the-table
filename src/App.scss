@@ -34,11 +34,13 @@ $backgroundColorNav: #4e944f;
   display: flex;
   justify-content: start;
   background-color: $backgroundColorNav;
-  padding-top: 2rem;
   text-align: center;
+  align-items: center;
   padding-left: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+}
+
+.logo-img {
+  width: 8%;
 }
 
 .title-section h2 {
@@ -46,7 +48,7 @@ $backgroundColorNav: #4e944f;
   font-family: Poppins;
   font-size: 3rem;
   color: whitesmoke;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* Checkout Pop-Up */

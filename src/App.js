@@ -12,6 +12,7 @@ import Table from "./components/Table";
 import EndGame from "./components/EndGame";
 import { PersistGate } from "redux-persist/es/integration/react";
 import configureStore from "./store/configureStore";
+import Logo from "./images/logo.png";
 
 const { store, persistor } = configureStore();
 
@@ -24,7 +25,8 @@ const App = () => {
             <div className="container">
               <section className="main-section">
                 <div className="title-section">
-                  <h2>The Table</h2>
+                  <img src={Logo} className="logo-img" />
+                  <h2>Wednesday</h2>
                 </div>
                 <Switch>
                   <Route exact path="/" component={Landing} />
