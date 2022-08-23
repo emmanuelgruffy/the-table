@@ -38,12 +38,13 @@ $backgroundColorMain: #83bd75;
 }
 
 .warning-popup {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   text-align: center;
-  color: #e2f027;
+  color: #ab000d;
+  background-color: #ffebee;
   font-family: $fontFamily;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 /* navbar */

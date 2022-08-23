@@ -17,18 +17,15 @@ const CheckoutForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let action = e.target.ownerDocument.activeElement.name;
-    if (action === "leave") {
-      if (editFinalResult) {
-        updatePlayerFinalResult(playerId, finalAmount);
-        setCheckoutFormIsOn(false);
-      } else {
-        updatePlayerCheckout(playerId, finalAmount);
-        setCheckoutFormIsOn(false);
-      }
+
+    if (editFinalResult) {
+      updatePlayerFinalResult(playerId, finalAmount);
+      setCheckoutFormIsOn(false);
     } else {
+      updatePlayerCheckout(playerId, finalAmount);
       setCheckoutFormIsOn(false);
     }
+
     setFinalAmount("");
   };
 
@@ -65,7 +62,11 @@ const CheckoutForm = ({
             >
               <i className="fas fa-check-square check-icon"></i>
             </button>
-            <button className="btn-submit stay" type="submit" name="stay">
+            <button
+              className="btn-submit stay"
+              onClick={() => setCheckoutFormIsOn(false)}
+              name="stay"
+            >
               <i className="fas fa-window-close times-icon"></i>
             </button>
           </div>

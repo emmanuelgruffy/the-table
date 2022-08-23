@@ -51,100 +51,100 @@ const Table = ({
     history.push("/end-game");
   };
 
-  //TODO: show current time
-
   return (
-    <div className="table-page-section">
-      <div className="navbar-container">
-        <div className="navbar-section end">
-          {allOut && totalPlayersBalance === 0 ? (
-            <button className="btn-end-game-on" onClick={handleClick}>
-              End Game
-            </button>
-          ) : (
-            <button className="btn-end-game-off" disabled>
-              End Game
-            </button>
-          )}
-        </div>
-      </div>
+    <>
       {allOut && totalPlayersBalance !== 0 && (
         <div className="warning-popup">
           <p>Current balance is {totalPlayersBalance}. Must be 0.</p>
         </div>
       )}
-      <section className="table-content">
-        <div className="table-players-content">
-          <div className="players-header">
-            <div className="ph item-pl">Player</div>
-            <div className="ph item-as">At stake</div>
-            <div className="ph item-bi">Buy ins</div>
-            <div className="ph item-lb">Last buy</div>
-          </div>
-          <hr className="players-header-underline" />
-          <div className="players-content">
-            {players.map(
-              (
-                { playerId, rebuyCount, playerName, rebuyTimes, isOut },
-                index
-              ) => (
-                <Player
-                  key={index}
-                  playerId={playerId}
-                  playerName={playerName}
-                  rebuyTimes={rebuyTimes}
-                  rebuyCount={rebuyCount}
-                  isOut={isOut}
-                  checkIfAllOut={checkIfAllOut}
-                  submitted={() => {
-                    setNewPlayerButton(false);
-                    setAllout(false);
-                  }}
-                />
-              )
-            )}
-            {/* DISABLING SORTING .sort((p1, p2) => p2.props.rebuyCount - p1.props.rebuyCount) */}
-          </div>
-          <div>
-            {newPlayerButton ? (
-              <Fragment>
-                <SetPlayer
-                  submitted={() => {
-                    setNewPlayerButton(false);
-                    setAllout(false);
-                  }}
-                />
-              </Fragment>
+      <div className="table-page-section">
+        <div className="navbar-container">
+          <div className="navbar-section end">
+            {allOut && totalPlayersBalance === 0 ? (
+              <button className="btn-end-game-on" onClick={handleClick}>
+                End Game
+              </button>
             ) : (
-              <Fragment>
-                <button
-                  className="btn-add-player"
-                  onClick={() => setNewPlayerButton("true")}
-                >
-                  +
-                </button>
-              </Fragment>
+              <button className="btn-end-game-off" disabled>
+                End Game
+              </button>
             )}
           </div>
         </div>
-        <div className="table-stats-content">
-          <div className="ts item-t">Time:</div>
-          <div className="ts-box ts-first">
-            <h4 className="ts-box-value">
-              <Moment format="HH:mm">{Date.now()}</Moment>
-            </h4>
+        <section className="table-content">
+          <div className="table-players-content">
+            <div className="players-header">
+              <div className="ph item-pl">Player</div>
+              <div className="ph item-as">At stake</div>
+              <div className="ph item-bi">Buy ins</div>
+              <div className="ph item-lb">Last buy</div>
+            </div>
+            <hr className="players-header-underline" />
+            <div className="players-content">
+              {players.map(
+                (
+                  { playerId, rebuyCount, playerName, rebuyTimes, isOut },
+                  index
+                ) => (
+                  <Player
+                    key={index}
+                    playerId={playerId}
+                    playerName={playerName}
+                    rebuyTimes={rebuyTimes}
+                    rebuyCount={rebuyCount}
+                    isOut={isOut}
+                    checkIfAllOut={checkIfAllOut}
+                    submitted={() => {
+                      setNewPlayerButton(false);
+                      setAllout(false);
+                    }}
+                  />
+                )
+              )}
+              {/* DISABLING SORTING .sort((p1, p2) => p2.props.rebuyCount - p1.props.rebuyCount) */}
+            </div>
+            <div>
+              {newPlayerButton ? (
+                <Fragment>
+                  <SetPlayer
+                    submitted={() => {
+                      setNewPlayerButton(false);
+                      setAllout(false);
+                    }}
+                  />
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <button
+                    className="btn-add-player"
+                    onClick={() => setNewPlayerButton("true")}
+                  >
+                    +
+                  </button>
+                </Fragment>
+              )}
+            </div>
           </div>
-          <div className="ts item-a">At stake:</div>
-          <div className="ts-box">
-            <h4 className="ts-box-value">1150$</h4>
+          <div className="table-stats-content">
+            <div className="ts item-t">Time:</div>
+            <div className="ts-box ts-first">
+              <h4 className="ts-box-value">
+                <Moment format="HH:mm">{Date.now()}</Moment>
+              </h4>
+            </div>
+            <div className="ts item-a">At stake:</div>
+            <div className="ts-box">
+              <h4 className="ts-box-value">1150$</h4>
+            </div>
+            <div className="ts item-c">Chips:</div>
+            <div className="ts-box">
+              <h4 className="ts-box-value">300</h4>
+            </div>
           </div>
-          <div className="ts item-c">Chips:</div>
-          <div className="ts-box">
-            <h4 className="ts-box-value">300</h4>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
 

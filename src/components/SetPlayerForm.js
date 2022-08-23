@@ -21,19 +21,11 @@ const SetPlayerForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editMode) {
-      let action = e.target.ownerDocument.activeElement.name;
-      if (action === "leave") {
-        editPlayer(capitalize(playerName), playerId);
-        setEditPlayerNameOn(false);
-        submitted();
-      } else {
-        setEditPlayerNameOn(false);
-      }
+      editPlayer(capitalize(playerName), playerId);
+      setEditPlayerNameOn(false);
+      submitted();
     } else {
-      let action = e.target.ownerDocument.activeElement.name;
-      if (action === "leave") {
-        capitalize(playerName);
-      }
+      capitalize(playerName);
     }
   };
   return (
@@ -64,7 +56,11 @@ const SetPlayerForm = ({
             >
               <i className="fas fa-check-square check-icon"></i>
             </button>
-            <button className="btn-submit stay" type="submit" name="stay">
+            <button
+              className="btn-submit stay"
+              onClick={() => setEditPlayerNameOn(false)}
+              name="stay"
+            >
               <i className="fas fa-window-close times-icon"></i>
             </button>
           </div>
