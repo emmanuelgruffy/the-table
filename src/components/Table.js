@@ -135,11 +135,11 @@ const Table = ({
             </div>
             <div className="ts item-a">At stake:</div>
             <div className="ts-box">
-              <h4 className="ts-box-value">1150$</h4>
+              <h4 className="ts-box-value">{totalBuyIns}$</h4>
             </div>
             <div className="ts item-c">Chips:</div>
             <div className="ts-box">
-              <h4 className="ts-box-value">300</h4>
+              <h4 className="ts-box-value">{totalChips}</h4>
             </div>
           </div>
         </section>
