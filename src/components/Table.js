@@ -26,11 +26,15 @@ const Table = ({
     );
   }
   let totalChips = totalBuyIns * minimalBuyIn; // Chips
-
+  let [currentTime, setCurrentTime] = useState(Date.now());
   useEffect(() => {
     setTotalChips(totalChips);
     checkIfAllOut();
   });
+
+  useEffect(() => {
+    setInterval(() => setCurrentTime(Date.now()), 1000);
+  }, []);
 
   const [newPlayerButton, setNewPlayerButton] = useState(false);
   const [allOut, setAllout] = useState(false);
@@ -130,16 +134,16 @@ const Table = ({
             <div className="ts item-t">Time:</div>
             <div className="ts-box ts-first">
               <h4 className="ts-box-value">
-                <Moment format="HH:mm">{Date.now()}</Moment>
+                <Moment format="HH:mm">{currentTime}</Moment>
               </h4>
             </div>
-            <div className="ts item-a">At stake:</div>
+            <div className="ts item-a">Total buy ins:</div>
             <div className="ts-box">
-              <h4 className="ts-box-value">{totalBuyIns}$</h4>
+              <h4 className="ts-box-value">{totalBuyIns}</h4>
             </div>
             <div className="ts item-c">Chips:</div>
             <div className="ts-box">
-              <h4 className="ts-box-value">{totalChips}</h4>
+              <h4 className="ts-box-value">{totalChips}$</h4>
             </div>
           </div>
         </section>
