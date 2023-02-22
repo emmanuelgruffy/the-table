@@ -26,7 +26,7 @@ const Table = ({
     );
   }
   const [currentTime, setCurrentTime] = useState(Date.now);
-  let totalChips = totalBuyIns * minimalBuyIn; // Chips
+  let totalChips = totalBuyIns * minimalBuyIn; // total Chips
   useEffect(() => {
     setTotalChips(totalChips);
     checkIfAllOut();
