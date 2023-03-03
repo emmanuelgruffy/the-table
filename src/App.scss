@@ -35,6 +35,7 @@ $backgroundColorNav: #4e944f;
 .title-section {
     display: flex;
     justify-content: start;
+    align-items: center;
     background-color: $backgroundColorNav;
     padding-top: 2rem;
     text-align: center;
@@ -43,12 +44,18 @@ $backgroundColorNav: #4e944f;
     padding-bottom: 1rem;
 }
 
+.title-section .logo {
+    width: 6rem;
+    height: 6rem;
+}
+
 .title-section h2 {
     background-color: $backgroundColorNav;
     font-family: Poppins;
     font-size: 3rem;
     color: whitesmoke;
-    font-weight: 400;
+    font-weight: 700;
+    margin-left: 1rem;
 }
 
 

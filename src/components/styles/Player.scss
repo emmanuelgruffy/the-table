@@ -79,7 +79,7 @@ $fontFamily: Lato;
 
 .row-item-grayedOut {
     width: 20%;
-    font-family: Rye;
+    font-family: $fontFamily;
     font-size: 1.2rem;
     font-weight: 400;
     color: #525252;
@@ -89,7 +89,7 @@ $fontFamily: Lato;
     display: flex;
     flex-direction: row;
     width: 20%;
-    font-family: Rye;
+    font-family: $fontFamily;
     font-size: 1.2rem;
     font-weight: 400;
     color: #525252;
